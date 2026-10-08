@@ -1,0 +1,12 @@
+server=mine client=his scenario=truncated_response proxy=[--direction s2c --truncate 140]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+connecting to 127.0.0.1:43657
+-> preface BHT1
+-> HEADERS stream=1 GET /index.html (END_STREAM)
+  <- frame type=0x0 flags=0x00 stream=1 len=121
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:21:56 GMT', 'content-length': '12', 'content-type': 'text/html', 'last-modified': 'Thu, 08 Oct 2026 22:21:04 GMT', 'etag': '"c-6ac81750"', 'cache-control': 'no-cache'}
+error: connection failed: server closed the connection mid-frame
+--- proxy stderr
+inject: connection 1

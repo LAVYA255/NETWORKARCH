@@ -1,0 +1,6 @@
+server=ref client=cleanroom scenario=corrupt_method_400 proxy=[--flip-byte 12]
+exit=4 want=4 connections=1 verdict=XFAIL
+stdout_sha256=143ace3ba5a1705eff7d701569847c81223dc66d03f960c9fcfc54e2ff8bd0f8
+--- stderr
+--- proxy stderr
+inject: connection 1

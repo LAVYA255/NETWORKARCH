@@ -1,0 +1,814 @@
+PASS  cleansrv <- bcurl     get_blob
+PASS  cleansrv <- bcurl     head
+PASS  cleansrv <- bcurl     missing_404
+PASS  cleansrv <- bcurl     three_paths_one_conn
+PASS  cleansrv <- bcurl     unknown_frames_both_ways
+PASS  cleansrv <- bcurl     corrupt_method_400
+PASS  cleansrv <- bcurl     corrupt_preface
+PASS  cleansrv <- bcurl     corrupt_response_length
+PASS  cleansrv <- bcurl     truncated_response
+PASS  cleansrv <- bcurl     slow_link
+PASS  cleansrv <- cleanroom get_blob
+PASS  cleansrv <- cleanroom head
+PASS  cleansrv <- cleanroom missing_404
+PASS  cleansrv <- cleanroom three_paths_one_conn
+PASS  cleansrv <- cleanroom unknown_frames_both_ways
+PASS  cleansrv <- cleanroom corrupt_method_400
+PASS  cleansrv <- cleanroom corrupt_preface
+PASS  cleansrv <- cleanroom corrupt_response_length
+PASS  cleansrv <- cleanroom truncated_response
+PASS  cleansrv <- cleanroom slow_link
+PASS  cleansrv <- his       get_blob
+N/A   cleansrv <- his       head (independent client is GET-only; not run)
+PASS  cleansrv <- his       missing_404
+PASS  cleansrv <- his       three_paths_one_conn
+PASS  cleansrv <- his       unknown_frames_both_ways
+PASS  cleansrv <- his       corrupt_method_400
+PASS  cleansrv <- his       corrupt_preface
+PASS  cleansrv <- his       corrupt_response_length
+PASS  cleansrv <- his       truncated_response
+PASS  cleansrv <- his       slow_link
+PASS  cleansrv <- refcurl   get_blob
+PASS  cleansrv <- refcurl   head
+PASS  cleansrv <- refcurl   missing_404
+PASS  cleansrv <- refcurl   three_paths_one_conn
+PASS  cleansrv <- refcurl   unknown_frames_both_ways
+PASS  cleansrv <- refcurl   corrupt_method_400
+PASS  cleansrv <- refcurl   corrupt_preface
+XFAIL cleansrv <- refcurl   corrupt_response_length (; c2s lacks GOAWAY(2); draft-spec drift: draft refcurl sends no GOAWAY(2) on oversize Length; SPEC 9 now requires it)
+PASS  cleansrv <- refcurl   truncated_response
+PASS  cleansrv <- refcurl   slow_link
+PASS  hissrv   <- bcurl     get_blob
+PASS  hissrv   <- bcurl     head
+PASS  hissrv   <- bcurl     missing_404
+PASS  hissrv   <- bcurl     three_paths_one_conn
+PASS  hissrv   <- bcurl     unknown_frames_both_ways
+PASS  hissrv   <- bcurl     corrupt_method_400
+PASS  hissrv   <- bcurl     corrupt_preface
+PASS  hissrv   <- bcurl     corrupt_response_length
+PASS  hissrv   <- bcurl     truncated_response
+PASS  hissrv   <- bcurl     slow_link
+PASS  hissrv   <- cleanroom get_blob
+PASS  hissrv   <- cleanroom head
+PASS  hissrv   <- cleanroom missing_404
+PASS  hissrv   <- cleanroom three_paths_one_conn
+PASS  hissrv   <- cleanroom unknown_frames_both_ways
+PASS  hissrv   <- cleanroom corrupt_method_400
+PASS  hissrv   <- cleanroom corrupt_preface
+PASS  hissrv   <- cleanroom corrupt_response_length
+PASS  hissrv   <- cleanroom truncated_response
+PASS  hissrv   <- cleanroom slow_link
+PASS  hissrv   <- his       get_blob
+N/A   hissrv   <- his       head (independent client is GET-only; not run)
+PASS  hissrv   <- his       missing_404
+PASS  hissrv   <- his       three_paths_one_conn
+PASS  hissrv   <- his       unknown_frames_both_ways
+PASS  hissrv   <- his       corrupt_method_400
+PASS  hissrv   <- his       corrupt_preface
+PASS  hissrv   <- his       corrupt_response_length
+PASS  hissrv   <- his       truncated_response
+PASS  hissrv   <- his       slow_link
+PASS  hissrv   <- refcurl   get_blob
+PASS  hissrv   <- refcurl   head
+PASS  hissrv   <- refcurl   missing_404
+PASS  hissrv   <- refcurl   three_paths_one_conn
+PASS  hissrv   <- refcurl   unknown_frames_both_ways
+PASS  hissrv   <- refcurl   corrupt_method_400
+PASS  hissrv   <- refcurl   corrupt_preface
+XFAIL hissrv   <- refcurl   corrupt_response_length (; c2s lacks GOAWAY(2); draft-spec drift: draft refcurl sends no GOAWAY(2) on oversize Length; SPEC 9 now requires it)
+PASS  hissrv   <- refcurl   truncated_response
+PASS  hissrv   <- refcurl   slow_link
+PASS  mine     <- bcurl     get_blob
+PASS  mine     <- bcurl     head
+PASS  mine     <- bcurl     missing_404
+PASS  mine     <- bcurl     three_paths_one_conn
+PASS  mine     <- bcurl     unknown_frames_both_ways
+PASS  mine     <- bcurl     corrupt_method_400
+PASS  mine     <- bcurl     corrupt_preface
+PASS  mine     <- bcurl     corrupt_response_length
+PASS  mine     <- bcurl     truncated_response
+PASS  mine     <- bcurl     slow_link
+PASS  mine     <- cleanroom get_blob
+PASS  mine     <- cleanroom head
+PASS  mine     <- cleanroom missing_404
+PASS  mine     <- cleanroom three_paths_one_conn
+PASS  mine     <- cleanroom unknown_frames_both_ways
+PASS  mine     <- cleanroom corrupt_method_400
+PASS  mine     <- cleanroom corrupt_preface
+PASS  mine     <- cleanroom corrupt_response_length
+PASS  mine     <- cleanroom truncated_response
+PASS  mine     <- cleanroom slow_link
+PASS  mine     <- his       get_blob
+N/A   mine     <- his       head (independent client is GET-only; not run)
+PASS  mine     <- his       missing_404
+PASS  mine     <- his       three_paths_one_conn
+PASS  mine     <- his       unknown_frames_both_ways
+PASS  mine     <- his       corrupt_method_400
+PASS  mine     <- his       corrupt_preface
+PASS  mine     <- his       corrupt_response_length
+PASS  mine     <- his       truncated_response
+PASS  mine     <- his       slow_link
+PASS  mine     <- refcurl   get_blob
+PASS  mine     <- refcurl   head
+PASS  mine     <- refcurl   missing_404
+PASS  mine     <- refcurl   three_paths_one_conn
+PASS  mine     <- refcurl   unknown_frames_both_ways
+PASS  mine     <- refcurl   corrupt_method_400
+PASS  mine     <- refcurl   corrupt_preface
+XFAIL mine     <- refcurl   corrupt_response_length (; c2s lacks GOAWAY(2); draft-spec drift: draft refcurl sends no GOAWAY(2) on oversize Length; SPEC 9 now requires it)
+PASS  mine     <- refcurl   truncated_response
+PASS  mine     <- refcurl   slow_link
+PASS  ref      <- bcurl     get_blob
+PASS  ref      <- bcurl     head
+XFAIL ref      <- bcurl     missing_404 (; stdout differs; draft-spec drift: draft 404 carries a body; SPEC 6 now: errors have none)
+PASS  ref      <- bcurl     three_paths_one_conn
+PASS  ref      <- bcurl     unknown_frames_both_ways
+XFAIL ref      <- bcurl     corrupt_method_400 (; stdout differs; draft-spec drift: draft 400 carries a body; SPEC 6 now: errors have none)
+XFAIL ref      <- bcurl     corrupt_preface (; s2c lacks GOAWAY(3); draft-spec drift: draft ref answers a bad preface GOAWAY(1); SPEC 2 now: GOAWAY(3))
+PASS  ref      <- bcurl     corrupt_response_length
+XFAIL ref      <- bcurl     truncated_response (exit 0, want 1; draft-spec drift: draft response is shorter than 140 bytes, so the cut never lands)
+PASS  ref      <- bcurl     slow_link
+PASS  ref      <- cleanroom get_blob
+PASS  ref      <- cleanroom head
+XFAIL ref      <- cleanroom missing_404 (; stdout differs; draft-spec drift: draft 404 carries a body; SPEC 6 now: errors have none)
+PASS  ref      <- cleanroom three_paths_one_conn
+PASS  ref      <- cleanroom unknown_frames_both_ways
+XFAIL ref      <- cleanroom corrupt_method_400 (; stdout differs; draft-spec drift: draft 400 carries a body; SPEC 6 now: errors have none)
+XFAIL ref      <- cleanroom corrupt_preface (; s2c lacks GOAWAY(3); draft-spec drift: draft ref answers a bad preface GOAWAY(1); SPEC 2 now: GOAWAY(3))
+PASS  ref      <- cleanroom corrupt_response_length
+XFAIL ref      <- cleanroom truncated_response (exit 0, want 1; draft-spec drift: draft response is shorter than 140 bytes, so the cut never lands)
+PASS  ref      <- cleanroom slow_link
+PASS  ref      <- his       get_blob
+N/A   ref      <- his       head (independent client is GET-only; not run)
+PASS  ref      <- his       missing_404
+PASS  ref      <- his       three_paths_one_conn
+PASS  ref      <- his       unknown_frames_both_ways
+PASS  ref      <- his       corrupt_method_400
+XFAIL ref      <- his       corrupt_preface (stderr lacks 'GOAWAY(3)'; s2c lacks GOAWAY(3); draft-spec drift: draft ref answers a bad preface GOAWAY(1); SPEC 2 now: GOAWAY(3))
+PASS  ref      <- his       corrupt_response_length
+XFAIL ref      <- his       truncated_response (exit 0, want 1; draft-spec drift: draft response is shorter than 140 bytes, so the cut never lands)
+PASS  ref      <- his       slow_link
+PASS  ref      <- refcurl   get_blob
+PASS  ref      <- refcurl   head
+XFAIL ref      <- refcurl   missing_404 (; stdout differs; draft-spec drift: draft 404 carries a body; SPEC 6 now: errors have none)
+PASS  ref      <- refcurl   three_paths_one_conn
+PASS  ref      <- refcurl   unknown_frames_both_ways
+XFAIL ref      <- refcurl   corrupt_method_400 (; stdout differs; draft-spec drift: draft 400 carries a body; SPEC 6 now: errors have none)
+XFAIL ref      <- refcurl   corrupt_preface (; s2c lacks GOAWAY(3); draft-spec drift: draft ref answers a bad preface GOAWAY(1); SPEC 2 now: GOAWAY(3))
+XFAIL ref      <- refcurl   corrupt_response_length (; c2s lacks GOAWAY(2); draft-spec drift: draft refcurl sends no GOAWAY(2) on oversize Length; SPEC 9 now requires it)
+XFAIL ref      <- refcurl   truncated_response (exit 0, want 1; draft-spec drift: draft response is shorter than 140 bytes, so the cut never lands)
+PASS  ref      <- refcurl   slow_link
+
+138 passed, 18 xfail (draft-spec drift), 4 n/a (not run), 0 failed, of 156 rows
+
+sha256 of every artifact:
+beed337c43898944fb3e91587a74dc7d1906d08d1ef59c7ef764c01696f26ebf  ./HEXDUMP.md
+6b6f0e0f4f8979a359e03ba4cbc7191aeb44555e79ecaf8c2c35e3921b43fcc8  ./HEXDUMP.txt
+a3000262bdc805e2c982da3ab044eb64b316685d0159724b2a3fed60f2c69237  ./README.md
+233a19bd11dfbc0f5bad752f6e1fce4ca46bee3ad0f63a4f98ce9a967f22f299  ./SPEC.md
+665f86b56e4af6e25926897144fe40e21cc18a0035351bbc5ff585c2cd4ec88a  ./bcurl
+e2cfb038e54b28eef780d15ae52ccd7f4a97a5d0376014dec306759af6e37499  ./bhttp.py
+f8d173f087c4b232f5234736078d9a75b059f62683d85b0c0067d1b5fa2fc44d  ./bserve
+aab870ad5f7915aefcf57b077fedda9604c12385268ee5aeb16da2542932d486  ./interop/cleanroom_client.py
+87ab70949cfc262137fb67fdc43d7c1d2dcbd780f347416995a44eb53e573e25  ./interop/cleanroom_server.py
+43c76a488f0a08e62a0b430c2593b04350e83f12fd9a457bd96a1d9e42493aad  ./interop/his_client.py
+0fd516a8c85f22c1c990f8ef5968ca3c47daa02d6d7756ab9077f11c43aca7cb  ./interop/his_server.py
+09f2c7d7bc9d613272888d892f06333a56a9a9eceddf755ba3b05396031aa26c  ./interop/his_server_shim.py
+8d2391b355ef90373e3028a5146d7e2103152c4e1ed78c4e9fc6ab436f07499e  ./interop/his_shim.py
+f306d7804f96ca0ae99763bb6a9ffd9afb107975a7569c162448d527c5f641fa  ./interop/inject.py
+3490570184e96a42d1b24e280f13840b39b166ed5f0a2a260d5356750868e823  ./interop/matrix_output.txt
+2435cface4bebb428278f00461b7063a282b3b8a6cae4637b3f6c33e3da6ad13  ./interop/run.sh
+461d5091f07600e512985880f4d38eb1f24426fc3e37ae4d85709973642a5fb4  ./interop/sessions/his_server-session-fullexport.md
+8838980f28873474954d808f7b1d9ce8a711a4d92243e82391670a97a962c0f2  ./interop/sessions/his_server-session.md
+bedd22af07cf257a2ab04cb539d809967db599fc3fbc83ce865b1123d3221b65  ./interop/transcripts/cleansrv__bcurl__corrupt_method_400.c2s.bin
+4b813937c4126d40bd7d082073aa6eb92b69a90b0228202e5e5c7ceb89468713  ./interop/transcripts/cleansrv__bcurl__corrupt_method_400.hex.txt
+f36ca4efdaab9c9fb53fb3a2532e0e0ccd7e8490b7f190fe5af88a91686f18cf  ./interop/transcripts/cleansrv__bcurl__corrupt_method_400.log
+2b5c0d7f08a137d5498c0192f764977d31601cb25162f6981c99bcf9140db90d  ./interop/transcripts/cleansrv__bcurl__corrupt_method_400.s2c.bin
+c2e0ab74a14df889080a4b582b9dc3617f15f8d83f0be7452deb2fb787c71fee  ./interop/transcripts/cleansrv__bcurl__corrupt_preface.c2s.bin
+da46b93b483dcc94584c6d4d4b20c52546cb9888f87297fda8cb0042a9440431  ./interop/transcripts/cleansrv__bcurl__corrupt_preface.hex.txt
+8283c65ef01412ab92baffc35b862143029f928a3c19202e74088d7ac80271b0  ./interop/transcripts/cleansrv__bcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/cleansrv__bcurl__corrupt_preface.s2c.bin
+ec77d43b94e023e18e80c264b65fbce6179caf13ed7d711c6690de8b2e676e75  ./interop/transcripts/cleansrv__bcurl__corrupt_response_length.c2s.bin
+f8877247e154c3dc8c93201f1c5cac24cc9631bd564cbaaec859f061940990c4  ./interop/transcripts/cleansrv__bcurl__corrupt_response_length.hex.txt
+ded4b6fee09c3d21402d26bbb445aea90e3db8ce4ec58edaebd18728e6c7fb07  ./interop/transcripts/cleansrv__bcurl__corrupt_response_length.log
+a86c0701ac577e6be3c6510e6f4acc262a52e97c5c47db4f4c9f835df0889b39  ./interop/transcripts/cleansrv__bcurl__corrupt_response_length.s2c.bin
+f0b24f3ac0e71a067888610139f1069049047b4ac49f007580ac0d5c777acf4f  ./interop/transcripts/cleansrv__bcurl__get_blob.c2s.bin
+01995bf1a87d97d60a4ca204fb2c99e0dc79fe1f967bc4f8ad57ea8a2cb2a179  ./interop/transcripts/cleansrv__bcurl__get_blob.hex.txt
+d50f4e8945ee97dc42508a79015af4cd14d9fc13ea37fd7bd548e7f06e1ee197  ./interop/transcripts/cleansrv__bcurl__get_blob.log
+9c7c4f4a232f563a9999b05a5da6dffcc3c5ef7f6af77c7f101a5e6d4de61262  ./interop/transcripts/cleansrv__bcurl__get_blob.s2c.bin
+2cc53069e52d93a0b4485e5c866ff5c6a827489e4c53ac8e1444880e63c8d988  ./interop/transcripts/cleansrv__bcurl__head.c2s.bin
+c82d881881bebbbbf4f91aad2c367bf6dfa1884ee78dea47728289451141eaaa  ./interop/transcripts/cleansrv__bcurl__head.hex.txt
+577577c6061281e04e372f19361c0f387f62c833276d6f4fe5f32e22cec09853  ./interop/transcripts/cleansrv__bcurl__head.log
+fee56fc331c5baffee80cfbdc69dc0ece3a88812d721e8d6052d57ae8d9ae2a3  ./interop/transcripts/cleansrv__bcurl__head.s2c.bin
+12a34ed255d0af4762fae491fcc23844b1d05b24c6a352022891105e5ed756b4  ./interop/transcripts/cleansrv__bcurl__missing_404.c2s.bin
+a82a247b7b7a0cf61d00bcba0033f93ebe18db1141344bfd62d2ca841bbc3b97  ./interop/transcripts/cleansrv__bcurl__missing_404.hex.txt
+674c2649d9cf6e2aa09191e9e95e554b82dc4cb49db3bb686086f60ce9ea8012  ./interop/transcripts/cleansrv__bcurl__missing_404.log
+fd63437421bd59151b24570c9fe494fa7809264cc4ea5a00dae22f055ca3c0f0  ./interop/transcripts/cleansrv__bcurl__missing_404.s2c.bin
+044647f4e6d4443444f26500c1d3e5d8d3263408296c8c5edce88dac22201e2f  ./interop/transcripts/cleansrv__bcurl__slow_link.c2s.bin
+8e074cd8947743b0145904b0da8325877a1b8c88c3f32aaa31e10dd0f9dd364f  ./interop/transcripts/cleansrv__bcurl__slow_link.hex.txt
+3d2b13b675ab7b72aeaedff1b41b0509181fb55101679b0b253acca6675af8a9  ./interop/transcripts/cleansrv__bcurl__slow_link.log
+f25c4b5c022ac587b49e52f9766693520073f80a9f521312bdc38520cb3ed1da  ./interop/transcripts/cleansrv__bcurl__slow_link.s2c.bin
+dc1f293d0ec91f1c6be6eebf7f88a3369e1f3576c073c26e401c8129e0d973a5  ./interop/transcripts/cleansrv__bcurl__three_paths_one_conn.c2s.bin
+9957ea7773f134c748841dabd8fca55a261b69d2f42c3a5e31b6862f7c7566ec  ./interop/transcripts/cleansrv__bcurl__three_paths_one_conn.hex.txt
+c23bb832cfd9ee97e244e09c993037366cc7ec60f55e24dc1d2c47fc696b733e  ./interop/transcripts/cleansrv__bcurl__three_paths_one_conn.log
+2578946ab994a462334bf0ff523a22cf96bf98416ddd2307ec546d62b3a4a051  ./interop/transcripts/cleansrv__bcurl__three_paths_one_conn.s2c.bin
+bfe2afdb56feb6d9ecce2e3178c207607ddaa481ccd3140b9b99c23c1db54a63  ./interop/transcripts/cleansrv__bcurl__truncated_response.c2s.bin
+7573cbccb7c77f735f98440cf3d81cc80f0f1c56555e8d08a3f68870c850ec1a  ./interop/transcripts/cleansrv__bcurl__truncated_response.hex.txt
+092726241e3915d55a0a8b59858c4b9ec6ba2dbeed31580b3f62767ce5570e0e  ./interop/transcripts/cleansrv__bcurl__truncated_response.log
+3919c38de2911b5da97165502247724f78267129827ef57ff47a62e49245cf18  ./interop/transcripts/cleansrv__bcurl__truncated_response.s2c.bin
+ba2e1884a2e8a15ef537da32c92e7f760bd98f75e55709be21e29e7182869d5d  ./interop/transcripts/cleansrv__bcurl__unknown_frames_both_ways.c2s.bin
+1131b21fef9370393085c1ac91e67056c4d042234a039da29cf402c499bb2e7d  ./interop/transcripts/cleansrv__bcurl__unknown_frames_both_ways.hex.txt
+31fba5201fbccc97f57c9ad8e083af0e872eab77e89f5a5d908051a7797d9225  ./interop/transcripts/cleansrv__bcurl__unknown_frames_both_ways.log
+265ab40545071e480c57dd6e80d61785175b9590b30da84ae179a7138183a0eb  ./interop/transcripts/cleansrv__bcurl__unknown_frames_both_ways.s2c.bin
+25932a421e613c00d6b424bc1e4625e40cdb125a465d7c437dfb806c63e00c03  ./interop/transcripts/cleansrv__cleanroom__corrupt_method_400.c2s.bin
+482c049ab5f072da56b89f208c310ecd2042758cdc3690a83a258ab2f2d2a391  ./interop/transcripts/cleansrv__cleanroom__corrupt_method_400.hex.txt
+2531b0ee6b95088ac2ebb56cf66cda328db1f2983f3715bfba4440a2e50ec84e  ./interop/transcripts/cleansrv__cleanroom__corrupt_method_400.log
+a3e7b5e3694e0450d14184b61ba25b96802016d0438b076ac0fe4f18950bd343  ./interop/transcripts/cleansrv__cleanroom__corrupt_method_400.s2c.bin
+c8083e66c25039c3981fe77fca14f78137a1ff93a0b8a82428b68cc35c6b6715  ./interop/transcripts/cleansrv__cleanroom__corrupt_preface.c2s.bin
+9b585f6925ba3708459888253b953fcde940cc76e53c6ef1f04ca10b4fc79933  ./interop/transcripts/cleansrv__cleanroom__corrupt_preface.hex.txt
+1351fab7980a2dd6eadce51dae2079abfce18aab965d983cd1611616fd93de82  ./interop/transcripts/cleansrv__cleanroom__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/cleansrv__cleanroom__corrupt_preface.s2c.bin
+4ed8e8fb34bd78cb0ebb2b31f245a9f3ff0830c842fcb360dbe05ad90404d8ed  ./interop/transcripts/cleansrv__cleanroom__corrupt_response_length.c2s.bin
+053e3b8a2b5d8d1db2ecf07897ecb9fe0663ae6bfa10f4dbd0ae7274e1b51408  ./interop/transcripts/cleansrv__cleanroom__corrupt_response_length.hex.txt
+5bef4a739d2b98af32e58c62597b4b1af0d5b5a9a42e18994a681d7a13e75d5b  ./interop/transcripts/cleansrv__cleanroom__corrupt_response_length.log
+a3d276a429016ad88595fb74d5e4b9069b322efd0f6891c572b064e40fd9bc59  ./interop/transcripts/cleansrv__cleanroom__corrupt_response_length.s2c.bin
+b18bf4d8e20382504b4628c3131e2cd43d1a62c82ca18afabbb6c692e36e13e0  ./interop/transcripts/cleansrv__cleanroom__get_blob.c2s.bin
+e12abb84a70f3d3d63d92dbcb9047a150abbceaae8a0b1b72652f916fadf6cc2  ./interop/transcripts/cleansrv__cleanroom__get_blob.hex.txt
+f29a737f2d0933436c7a77908fb41b7e678703f742e03956fdcbd023884a1d00  ./interop/transcripts/cleansrv__cleanroom__get_blob.log
+f25c4b5c022ac587b49e52f9766693520073f80a9f521312bdc38520cb3ed1da  ./interop/transcripts/cleansrv__cleanroom__get_blob.s2c.bin
+6d8c9555d030872f8580c9bff04413aa1c90a2bbbfc50ce63a5fc37b29e36496  ./interop/transcripts/cleansrv__cleanroom__head.c2s.bin
+d14c57a1ae1ac69d2fe9927c0f0c25c373f1a50ea26517b11880d2469f7ff64b  ./interop/transcripts/cleansrv__cleanroom__head.hex.txt
+bf2b523a0145c072e7735bc936bd5186acb046ea10a866f35da20a98524ed87c  ./interop/transcripts/cleansrv__cleanroom__head.log
+8faf22b1fa24c477de5062dc8e809030e8117d4744e412d932e78e19f2d353fb  ./interop/transcripts/cleansrv__cleanroom__head.s2c.bin
+aaf4c6c53b608380b94f59bebbd5fdce103ad4179de71e2d4fb7f7f9d884bc7a  ./interop/transcripts/cleansrv__cleanroom__missing_404.c2s.bin
+44767265ca5a4d50ad6549fbfac315a719d176e1a01ec38ea927eaf22f8b8c27  ./interop/transcripts/cleansrv__cleanroom__missing_404.hex.txt
+67306502ace5daeaf3553af1000d5e3843d24baf4e3c5cdcf2e63ba7dbb9960e  ./interop/transcripts/cleansrv__cleanroom__missing_404.log
+b9b8128bda777af22af3373011ec139daa3757b5963bc371748a2f01f0365155  ./interop/transcripts/cleansrv__cleanroom__missing_404.s2c.bin
+20229dcedc8556f6c94641786935d6bdd7ad1f84f841c4aae678daebf75d3280  ./interop/transcripts/cleansrv__cleanroom__slow_link.c2s.bin
+98644fae57f7d59467466102875f97003f51ec42e6af4b6da83b693c6104bc27  ./interop/transcripts/cleansrv__cleanroom__slow_link.hex.txt
+e96dceec3a28044d640831e422e6db27360fa62f9ea5bb03d801883460b32e4e  ./interop/transcripts/cleansrv__cleanroom__slow_link.log
+edf5167a9e9802915d6a99fdd6e7e6588e696fbc5e38d7f74706d92fa19535ac  ./interop/transcripts/cleansrv__cleanroom__slow_link.s2c.bin
+12d51987c0b4f1f72a901d96e037a8a10fe1cebace6aa45c590cc1c9fe942920  ./interop/transcripts/cleansrv__cleanroom__three_paths_one_conn.c2s.bin
+aba2882884efbec048b488fe110943650586617aea912ee767bc90922f74101e  ./interop/transcripts/cleansrv__cleanroom__three_paths_one_conn.hex.txt
+01ba462d4ccea111ed3a463cdb9f429772a557fc3bb54075a940c8772f4131fb  ./interop/transcripts/cleansrv__cleanroom__three_paths_one_conn.log
+18bdf74050f4d1fcd2207f0aefbd41f8bf6858e875348a78023b3be401573bfa  ./interop/transcripts/cleansrv__cleanroom__three_paths_one_conn.s2c.bin
+bf2238f45dd51ea93512e0feee5d49bb1837463510f24d1ddb7894302f967ef2  ./interop/transcripts/cleansrv__cleanroom__truncated_response.c2s.bin
+787ea04b12ea5d212f7ce0123de456b3bd15749160f66a6df629d6e8858c23bd  ./interop/transcripts/cleansrv__cleanroom__truncated_response.hex.txt
+2e50ec6a283e451ca59f024ad81ad7788ee0d7a41c6f7c7e405e9509d59b201e  ./interop/transcripts/cleansrv__cleanroom__truncated_response.log
+0ef511b05ae907e3e1467ed1589a99a55b64077e100610044feb7d6df8c6c185  ./interop/transcripts/cleansrv__cleanroom__truncated_response.s2c.bin
+e1d11dc04501bce4a9fbb2898c939a8f35c8ce715c65cc283b684390440f27ca  ./interop/transcripts/cleansrv__cleanroom__unknown_frames_both_ways.c2s.bin
+883f7087ac783f0a723c2bc519537eaf06b6a44f51abbcf6f14744802a060b59  ./interop/transcripts/cleansrv__cleanroom__unknown_frames_both_ways.hex.txt
+d1b8b84b200ee93ce1e188796d7d8fa4e1bd6730e238bb663b09fb4d6b27b6f9  ./interop/transcripts/cleansrv__cleanroom__unknown_frames_both_ways.log
+bfc5b4bc59daa9d7345658f41f1fb48a75e9dfddd7a0cf05f0f65a11ca2c95e0  ./interop/transcripts/cleansrv__cleanroom__unknown_frames_both_ways.s2c.bin
+caf6e2360735142909c05c97b6e3dff9c4e4ddfc9aa17dcadebf16826a6b5b15  ./interop/transcripts/cleansrv__his__corrupt_method_400.c2s.bin
+26991920f60ac17ba71da1bc477167b963b2bdd36362d3a16a934d5fade09c5c  ./interop/transcripts/cleansrv__his__corrupt_method_400.hex.txt
+7d6b0b711fe9228849914dbc97c74fbe6ab31a3959017fd3f6fde28f71c7958c  ./interop/transcripts/cleansrv__his__corrupt_method_400.log
+31ff29770fd4b0ec1366fe96c65f8c5505022d502210ce655c299614c62682e7  ./interop/transcripts/cleansrv__his__corrupt_method_400.s2c.bin
+43508d9eaa2c78bbc07ad61e8b2b0e83ed7a1222e9db7fdf3aa60a9b47c9b454  ./interop/transcripts/cleansrv__his__corrupt_preface.c2s.bin
+9f3d96551a72665fa6bf9edc0bc9891354098c761b6b9cce1ef5dc8a6dd175e3  ./interop/transcripts/cleansrv__his__corrupt_preface.hex.txt
+f0cf0a53e430b806ffd2f39441a578c26adc2df181c225407de3eaa77d960f9c  ./interop/transcripts/cleansrv__his__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/cleansrv__his__corrupt_preface.s2c.bin
+0fc21fa36711ae3ce8e5133db2b014db2c50edf75a9cb13c1f3a33c9eb34caf8  ./interop/transcripts/cleansrv__his__corrupt_response_length.c2s.bin
+f3c6f53e34f4e506ccf293629eeb5e20c356309e386ddbc1c19384268887908a  ./interop/transcripts/cleansrv__his__corrupt_response_length.hex.txt
+c7a387b2a3ca18e1fd27b3bb1d7e535c97e969ae40b93df2e3c7a89c3a2f19dc  ./interop/transcripts/cleansrv__his__corrupt_response_length.log
+a7d8fc539a316c91d57befd7d5903604d62204232603a79fed02fd40f648460f  ./interop/transcripts/cleansrv__his__corrupt_response_length.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/cleansrv__his__get_blob.c2s.bin
+4cace5d8e901c9573eb0783dc0cb247f533a2888bcb72c6761b43ee666306631  ./interop/transcripts/cleansrv__his__get_blob.hex.txt
+5f5d0a3a00a01d58caa21c6a30a8756455bef9939efce2b9915913fbb3b153ad  ./interop/transcripts/cleansrv__his__get_blob.log
+edf5167a9e9802915d6a99fdd6e7e6588e696fbc5e38d7f74706d92fa19535ac  ./interop/transcripts/cleansrv__his__get_blob.s2c.bin
+1cdfc1f6b5218ef359811dc6cd53d3b9fe39840083c97afd24642bb97bba3faf  ./interop/transcripts/cleansrv__his__missing_404.c2s.bin
+76c461450bd58717afc2305234040cdf5703aa16eab7b1200c1128366957e382  ./interop/transcripts/cleansrv__his__missing_404.hex.txt
+5fd7a487cbe3cf9a9447715fa9181f26357e692c0aceb3620efc4f32fecb1ced  ./interop/transcripts/cleansrv__his__missing_404.log
+ec97d15774090d51973be1e80222cd727b74111f501316edbb24321cf651ac81  ./interop/transcripts/cleansrv__his__missing_404.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/cleansrv__his__slow_link.c2s.bin
+182b685ce14bdc11552a7daebded240c6d827c2dc2b0c0bef278d3edd3bb22f1  ./interop/transcripts/cleansrv__his__slow_link.hex.txt
+7dc445fd0511719fb54169610737203e5a3b50414a7d227380a4d72c9388e688  ./interop/transcripts/cleansrv__his__slow_link.log
+1e8e7428054b8e84e2524a20c614c14b70b097eee8f8c7203ed33045e875095a  ./interop/transcripts/cleansrv__his__slow_link.s2c.bin
+5497ab52ed56b14c2098b1de332e78ac3397fcf686afde9f982ef135748362ee  ./interop/transcripts/cleansrv__his__three_paths_one_conn.c2s.bin
+4faffb094c03eebfda72f8e2d872aeb53e8bc63720ae3632fe7a08e4f6e52635  ./interop/transcripts/cleansrv__his__three_paths_one_conn.hex.txt
+e2dccd9ed4d29fc344353b5e0c0a3338e3bd9f25e4ade5c8b0b3fad2dc7c8660  ./interop/transcripts/cleansrv__his__three_paths_one_conn.log
+7f4f88b457771930d7503f88d7e90be9c9941eff8b47ab80d35cab27f81adc85  ./interop/transcripts/cleansrv__his__three_paths_one_conn.s2c.bin
+e4126b6dd7b6be1e895f8feda3d38fcfde735b32265024e854364f7ab229e0b2  ./interop/transcripts/cleansrv__his__truncated_response.c2s.bin
+3c9d8608fddd70bbc25b2ac7238486d672620b5cf90041535c8da922488b6a45  ./interop/transcripts/cleansrv__his__truncated_response.hex.txt
+ef2ef53ea8178abf722aa5e196c22bb91cfe43739fb8229a988b0b9dd935ff7e  ./interop/transcripts/cleansrv__his__truncated_response.log
+f511c14cc676251610bb15fcc97ac4ec241c919822e57a1e5550ddcd6e7f69b4  ./interop/transcripts/cleansrv__his__truncated_response.s2c.bin
+076a7556cbf98182b22e39de32f230eb5530e4e8d766bc811392907977db03c0  ./interop/transcripts/cleansrv__his__unknown_frames_both_ways.c2s.bin
+8260d9cacf307aac9edfa4adae8c6a073bcf134cb98ef03963424a9b87b32b33  ./interop/transcripts/cleansrv__his__unknown_frames_both_ways.hex.txt
+72648b79a36ce5bf84d08ffb030aff54745b707aa8aa96fd9966d72df3766635  ./interop/transcripts/cleansrv__his__unknown_frames_both_ways.log
+f5f3d11759b259c092cab19583fdf60ace8756a0e35bdaa98b99cfac0b59844c  ./interop/transcripts/cleansrv__his__unknown_frames_both_ways.s2c.bin
+48a93e3d0ccfdc64651357c31e63527657d7951d650590b2ef89f16fa87318b0  ./interop/transcripts/cleansrv__refcurl__corrupt_method_400.c2s.bin
+43ed1109f8cc699bbcd0af038ee529aae3a0a48de53b280d75926ae731c0981f  ./interop/transcripts/cleansrv__refcurl__corrupt_method_400.hex.txt
+b7453b3c130aa40dfefe6c0cf612b660ee130a9cf9b417e9adc05700418dd43f  ./interop/transcripts/cleansrv__refcurl__corrupt_method_400.log
+093332001a3fe3135213b9674611d51aaef1c63f7187189d5c8c4c668b7f3cff  ./interop/transcripts/cleansrv__refcurl__corrupt_method_400.s2c.bin
+92384f99abe0934a16c63e56d5325777af61b3c2e7c2d1a856c3031562416e2e  ./interop/transcripts/cleansrv__refcurl__corrupt_preface.c2s.bin
+2b4f003df3a334f5f033c49e1ee4a4cbb23cd87935113c5911225b51cb405c25  ./interop/transcripts/cleansrv__refcurl__corrupt_preface.hex.txt
+a93cb23df44fc7573dc7a8cc03e3ed5512eeda3d8f43f5c4a4b801fc727678dc  ./interop/transcripts/cleansrv__refcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/cleansrv__refcurl__corrupt_preface.s2c.bin
+13c4a21c61a6d525ec13edeff7523c22faeaaca0f303bd8df4251472a62260c8  ./interop/transcripts/cleansrv__refcurl__corrupt_response_length.c2s.bin
+9b45279c684fc824190ac3894fba27e2f2711199db5b39e9d340ef31b83676de  ./interop/transcripts/cleansrv__refcurl__corrupt_response_length.hex.txt
+7c7f8ab913a2ea937bce8517abdcc031ef1811a33682ae1962fbf280d8f120ee  ./interop/transcripts/cleansrv__refcurl__corrupt_response_length.log
+fd661a75dd4f2378c44c929e2cdd8e6831f83254627d86ae5fadd9b81115d0ee  ./interop/transcripts/cleansrv__refcurl__corrupt_response_length.s2c.bin
+d2de2a1aefd06c3d1b66da63edc8b3ad4daf2698dca7c5dbd8bd41b609dc9f94  ./interop/transcripts/cleansrv__refcurl__get_blob.c2s.bin
+f12d85fff276c4f4e4d2a2177596609d3214a92008968f74c4b30f1c5803da8d  ./interop/transcripts/cleansrv__refcurl__get_blob.hex.txt
+d6d18a41f4449a966c83c1e404b5d3e1a8547671f98d0b02788007a3268f8350  ./interop/transcripts/cleansrv__refcurl__get_blob.log
+d6608c193ba318da597a5d3839b22a17c4891cd58eb5a5698a69538765f82af2  ./interop/transcripts/cleansrv__refcurl__get_blob.s2c.bin
+a7da503490c48743414b79f6b2407575119378d61410977fa58b09f80508c165  ./interop/transcripts/cleansrv__refcurl__head.c2s.bin
+17730583437344ed572ab860553f7c5e267581f0d75065ab4b785ae34e14a4d7  ./interop/transcripts/cleansrv__refcurl__head.hex.txt
+0cef81d96f3bb0a6c03edd78a57e63d51e8b68d36f8a8bb257f2ba5c548e6679  ./interop/transcripts/cleansrv__refcurl__head.log
+d85bbe58532260db54484498eaaf46f18de7833035d8f9975f6ee1a065ad56d7  ./interop/transcripts/cleansrv__refcurl__head.s2c.bin
+20c886fa2a4e33e24a07b1d75962e640e97a0ccbbcaf9fe83b737a09f6ff889d  ./interop/transcripts/cleansrv__refcurl__missing_404.c2s.bin
+a9d9521985e05c85e993896e98003ded5680296c86e4c40d3b529b87c0925a7b  ./interop/transcripts/cleansrv__refcurl__missing_404.hex.txt
+89a8ccdd674b3a0a3c92991415dc68ae20907ef07014ed9c23249c4e378ae5a3  ./interop/transcripts/cleansrv__refcurl__missing_404.log
+6097ce4e0e58785323e220f708f4d11579b2e217fdb15ad884d9545c873791f3  ./interop/transcripts/cleansrv__refcurl__missing_404.s2c.bin
+948aa856e8e7ba376833850b7580631ef688a2d7c6943e9c334be4af7c4ae81d  ./interop/transcripts/cleansrv__refcurl__slow_link.c2s.bin
+95a9accdedba11781b1c929f1013d80f0725309c698dfe7001743c0313ebf952  ./interop/transcripts/cleansrv__refcurl__slow_link.hex.txt
+4a97147661781121c98dd33a0f4c5072b8862536e2e004b75688919590bc9bef  ./interop/transcripts/cleansrv__refcurl__slow_link.log
+1597ae7329624818ccea34427a033bf4cfd53cc73f13fffc3451543815c0d3b9  ./interop/transcripts/cleansrv__refcurl__slow_link.s2c.bin
+8508d5d2a97652129d241ee834d54ea471a9d8838c46e33a8f759c09bfa61e51  ./interop/transcripts/cleansrv__refcurl__three_paths_one_conn.c2s.bin
+c2ef0ec150f5e3138aabf5fbfda5275ca71a1f1c287168aa97f51e20ddfbfe0b  ./interop/transcripts/cleansrv__refcurl__three_paths_one_conn.hex.txt
+de62c7e03f26aa868346cb2346cd75c5ec4c00ec96b0615de7e451de9823f889  ./interop/transcripts/cleansrv__refcurl__three_paths_one_conn.log
+fb19780118dca3cc17eade3aba9bedb863a8fa6b5c7c9273c0d1e895e7338b11  ./interop/transcripts/cleansrv__refcurl__three_paths_one_conn.s2c.bin
+b574af95346ec0efac21eb3405761bf4e744f8435a25b1b1cb127e5b82d3b421  ./interop/transcripts/cleansrv__refcurl__truncated_response.c2s.bin
+7176d1e6cffa0dc1cb74db3eb4c338e9d0d0650cd1e937d62b9607a56c3d28f5  ./interop/transcripts/cleansrv__refcurl__truncated_response.hex.txt
+37436306e5ff7695a29582ac8320a8075863d1a943632b5dedcd6fa6a4e3766a  ./interop/transcripts/cleansrv__refcurl__truncated_response.log
+a196d9e811fb374b3a6e63ac44b79649f8f5257cf1eb562d6f98840267dea46d  ./interop/transcripts/cleansrv__refcurl__truncated_response.s2c.bin
+fe3738352d184b11db7e7e5360c9ddf52411f05d0ed01b5eeb1b313b61304605  ./interop/transcripts/cleansrv__refcurl__unknown_frames_both_ways.c2s.bin
+09f44ca39d5a19167f26dac1a0ed93e4aa0a1ed6d4d3dfdb30fc4b307325dbfe  ./interop/transcripts/cleansrv__refcurl__unknown_frames_both_ways.hex.txt
+a43f87009d82257f95a57bd271ad1aee62530a2e811692bae4d3bd692ecf699a  ./interop/transcripts/cleansrv__refcurl__unknown_frames_both_ways.log
+41d23f3480f30bfd041272536f13a2a46d6f47a8bef16d6f458f30224af3c281  ./interop/transcripts/cleansrv__refcurl__unknown_frames_both_ways.s2c.bin
+dacadcbb6d225bf3391b9e800dc8e7b851f3bbef84eec50fbe103237c2bb741c  ./interop/transcripts/hissrv__bcurl__corrupt_method_400.c2s.bin
+6b98b226aec9c512a369c3eb773e05a172fb78f6fba7440895d96768293195e1  ./interop/transcripts/hissrv__bcurl__corrupt_method_400.hex.txt
+1b8954077b741b5eef411e4df5fa7c9f3caae563ce0e17a17c14064bda889d8f  ./interop/transcripts/hissrv__bcurl__corrupt_method_400.log
+901909e52d10f493648d03844d869188e3f718459ffb338b0f2f9ac7cacd2de0  ./interop/transcripts/hissrv__bcurl__corrupt_method_400.s2c.bin
+a4a11ba7917c537f7ae7acb319376e1b417f2d29222af90fcd141ad199777a1a  ./interop/transcripts/hissrv__bcurl__corrupt_preface.c2s.bin
+2f83195f6236e96f8fda21b14cc36c0ea3ca2678c51f4e7ffe9724601bbbfc8c  ./interop/transcripts/hissrv__bcurl__corrupt_preface.hex.txt
+11bca026d731d8839e541472668c0324d755b37d0e6b22ae2b975bd9990f162c  ./interop/transcripts/hissrv__bcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/hissrv__bcurl__corrupt_preface.s2c.bin
+bb7830710f24f7411847f42bef88929a94dd7dfd72c142cab93e03efb016437d  ./interop/transcripts/hissrv__bcurl__corrupt_response_length.c2s.bin
+81cf00ac7bed3ea999c87076ec79b8c309bd96d945036dd843c46e18daabca2d  ./interop/transcripts/hissrv__bcurl__corrupt_response_length.hex.txt
+100cd71ffc53c0beb676333a50fa28ee71b260dc099b2188cb4853074c666314  ./interop/transcripts/hissrv__bcurl__corrupt_response_length.log
+08043940d354fa1ebcfd90bb4975a32f59788a5664d3a5a583dacf96b2b0c761  ./interop/transcripts/hissrv__bcurl__corrupt_response_length.s2c.bin
+2a813914660409b202a6c94103fb3b8f670f8558dcb719b1526dbbbc78ddc062  ./interop/transcripts/hissrv__bcurl__get_blob.c2s.bin
+c45190968387b1ac529f53bee5fddd6687ad6c775ea7346d7c5f84b41324a482  ./interop/transcripts/hissrv__bcurl__get_blob.hex.txt
+0d1cf3d8ae4f41d84e3352bb33daaddb3e9d0d48279a16570e3b6d597b5293cb  ./interop/transcripts/hissrv__bcurl__get_blob.log
+344a12d04cebec1ec622c9299b4f6e3bad15db5e234179ca5afada7a255d5168  ./interop/transcripts/hissrv__bcurl__get_blob.s2c.bin
+cbffae787fb512f6c01ada210e61ede36bdc6c0715c9dfe36b0df9ee471efc99  ./interop/transcripts/hissrv__bcurl__head.c2s.bin
+ce7a7577e827a8816b838d65653b05f25c4e0dcba5cd138b597c0afe6eca6c99  ./interop/transcripts/hissrv__bcurl__head.hex.txt
+dc8e15c31ec4fbc8192dab9e2253262963250283477323beed04eef9482da3c5  ./interop/transcripts/hissrv__bcurl__head.log
+8cc0b4ae62fcf2274b63e3010dda0eb3aa0e4a688332b4c9a4908c832e03555d  ./interop/transcripts/hissrv__bcurl__head.s2c.bin
+99e3db8c2bae986d5a79f3cc6483d2d643dd7a6355a68f229974292b2720c712  ./interop/transcripts/hissrv__bcurl__missing_404.c2s.bin
+ea35f06058efa61c4a9381b312187612b209fa396ba82c1df9ff4aba1bdb6f2d  ./interop/transcripts/hissrv__bcurl__missing_404.hex.txt
+fe4b46398dda814ba8e60e5ef86628178e1f81eeff9c4fc44bb25feaf82c9234  ./interop/transcripts/hissrv__bcurl__missing_404.log
+68c17173893fc777ffad70d73e5aaa6db9c6e6d423bb25f1c96515c93b65400a  ./interop/transcripts/hissrv__bcurl__missing_404.s2c.bin
+6037f11f7461df276fb736bb7f2042c21ab250d46b1217f6546598b51117c14b  ./interop/transcripts/hissrv__bcurl__slow_link.c2s.bin
+bc78421787f04237f07d172a5733beb2c8922baf9c70aa8b47b83c846a95425e  ./interop/transcripts/hissrv__bcurl__slow_link.hex.txt
+b2231ac04fc34c17495b7262848c79de63a04aea3d2285108519af207738451a  ./interop/transcripts/hissrv__bcurl__slow_link.log
+5d480c851bda4d500668dfa56c6bd98b124aa9e3e5e93cdf62cd40d8f5fd7c17  ./interop/transcripts/hissrv__bcurl__slow_link.s2c.bin
+717edac1797d1c34c663c89c7066db7b6a63f3cd4387d3ffcc16032ccfe4da14  ./interop/transcripts/hissrv__bcurl__three_paths_one_conn.c2s.bin
+aad0ce868ec72aa8ca9a6b522fa6e459a93db827aeb1615862b28075792d2343  ./interop/transcripts/hissrv__bcurl__three_paths_one_conn.hex.txt
+6a20d816ecf8d72170e098317b54adee73ba30964b63b0fe99f92b7d22faddd5  ./interop/transcripts/hissrv__bcurl__three_paths_one_conn.log
+d8b4655839ac41e86f8411d8ac8424f40ab44cfb7c9a78f81750b5f8921c7d53  ./interop/transcripts/hissrv__bcurl__three_paths_one_conn.s2c.bin
+58f90c7dc013fadff0534d8d51decf3f5e4d946f6f77470e126e3cbf9ca7c887  ./interop/transcripts/hissrv__bcurl__truncated_response.c2s.bin
+6df497d43f84fe97ec1750de322557cf8c7b67bc0ea625f8aecb8f6e45aa7480  ./interop/transcripts/hissrv__bcurl__truncated_response.hex.txt
+ca5a97eaaca701292eb029fff35960872b0236ca3e315834e282b805d9733111  ./interop/transcripts/hissrv__bcurl__truncated_response.log
+c9ec04fb8ff838ddbbc7e3f64b05f6aae86d1bff023f20db4691092cbe20f1f8  ./interop/transcripts/hissrv__bcurl__truncated_response.s2c.bin
+c51e5a2f894a16daf3c4eeab6170a9d4b8c2e95c7cc0a30628d74b1ed2a004bc  ./interop/transcripts/hissrv__bcurl__unknown_frames_both_ways.c2s.bin
+43392044a232d525d45202fe03cc455ed0f901395ecf18fbb2bb577bf7c82cda  ./interop/transcripts/hissrv__bcurl__unknown_frames_both_ways.hex.txt
+fd68865c8e1df480a4f41f6b41f888ce8a4d0bdb79b20fb8826a64b93a6bdb1e  ./interop/transcripts/hissrv__bcurl__unknown_frames_both_ways.log
+e4cb541163e0457939f608b43b839076d02df33764d6bec0de1727f91c71b5ad  ./interop/transcripts/hissrv__bcurl__unknown_frames_both_ways.s2c.bin
+498811eac2bdb5c8db1e392e43891d11c059f1d3c6227d69cb326438882f6306  ./interop/transcripts/hissrv__cleanroom__corrupt_method_400.c2s.bin
+fe41f0a6ee72afdb8c29344bc6d5ebf64b2c19e33b83e3f60ceae4f24e69faa7  ./interop/transcripts/hissrv__cleanroom__corrupt_method_400.hex.txt
+ca0749a3f7e3373cab547276b639009d971ed42dd6af614ee6bc03d66abc0363  ./interop/transcripts/hissrv__cleanroom__corrupt_method_400.log
+7c52c8a48d366c3b53adbd6fc7da6a448eb86082788486d996a0abd176d4c35b  ./interop/transcripts/hissrv__cleanroom__corrupt_method_400.s2c.bin
+737d6eb85b57c101207fac9da7bea3bd101af33aa3c78daa59504655bddeba50  ./interop/transcripts/hissrv__cleanroom__corrupt_preface.c2s.bin
+5472027d4374b1bdf38d6d62a658d22b548ab68beb2ecdc96b070edae00b0ee4  ./interop/transcripts/hissrv__cleanroom__corrupt_preface.hex.txt
+de5bb23b7e7abed795c87d927738d3c5cce99d3d665b08365cd62a94c9d36860  ./interop/transcripts/hissrv__cleanroom__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/hissrv__cleanroom__corrupt_preface.s2c.bin
+95cd5fa46af2ff6d03e585426aab5c33c766f42cee32aadfb94e88cf8d62e359  ./interop/transcripts/hissrv__cleanroom__corrupt_response_length.c2s.bin
+83c95a103708f9cc2dd482c0c54cb594146becaab9397319695428c46de85863  ./interop/transcripts/hissrv__cleanroom__corrupt_response_length.hex.txt
+0dc6904a8256b29ec6b4179399f397adb6f1ad9b71ec2d366bb86ddb95bf0496  ./interop/transcripts/hissrv__cleanroom__corrupt_response_length.log
+3c596caf93dcca6319c47a70b6736ca15411647edcf5131286b550a4539907a5  ./interop/transcripts/hissrv__cleanroom__corrupt_response_length.s2c.bin
+7b952b84992ad893706066b875fb9a377706283317b25e3598d22aa7b94b35fe  ./interop/transcripts/hissrv__cleanroom__get_blob.c2s.bin
+c979cfd0910ce2364eeee313773b09b696cd14b936576e1fd53e3bff38ec42af  ./interop/transcripts/hissrv__cleanroom__get_blob.hex.txt
+993451470860b689d82183d8da857dca78e1cdd3cfdc2cdf377dfbd60f3867aa  ./interop/transcripts/hissrv__cleanroom__get_blob.log
+a7890bc735f405b66d63451898bc6f8688e4cab0d50e5c6da031eeab6e34ca5b  ./interop/transcripts/hissrv__cleanroom__get_blob.s2c.bin
+c51aafcbaaa19c21fa15d972ba91b416d99a88c66fadcfcf8fce58abba4e5f3d  ./interop/transcripts/hissrv__cleanroom__head.c2s.bin
+1a28a0545c78946d68172fdd6569dbd8d307835893280d9ba417aa0f41325227  ./interop/transcripts/hissrv__cleanroom__head.hex.txt
+9e1ddbad275da79dc6a38189b5d566aafc14493cda7345b7667ebb44d739ac10  ./interop/transcripts/hissrv__cleanroom__head.log
+30ef42e4cd0745cf7c78a72c5f105552ee0c7b01675f0f96b8af7381717dea4f  ./interop/transcripts/hissrv__cleanroom__head.s2c.bin
+8df4feee53d2268aac046718ede6b2243e58c430486dd3752cb67710fc6c0864  ./interop/transcripts/hissrv__cleanroom__missing_404.c2s.bin
+50afb487e961314d0ad07dacff1a85ce65387c4ec0171a1f1cbdd3def1844805  ./interop/transcripts/hissrv__cleanroom__missing_404.hex.txt
+6a254f0ceaf45a1934ca2c499f9b01a380d0877f2a15b6e4d264331d8b686a5a  ./interop/transcripts/hissrv__cleanroom__missing_404.log
+fa32f4a9cefa225f6fd915e5b35ad8cec0137d524871c4b8f18d166b6effb8f0  ./interop/transcripts/hissrv__cleanroom__missing_404.s2c.bin
+74d9e9b5f27c1ccbf2627bb075f1b3077ead5a6b0572336d5329526281471ffd  ./interop/transcripts/hissrv__cleanroom__slow_link.c2s.bin
+5b252c0014d6b32c3ac8cf518d6775423aaac8f7c8a5e68ae17973b414c721ef  ./interop/transcripts/hissrv__cleanroom__slow_link.hex.txt
+a12ae6cd09993650b8af1369da6bd057a6eb5e5743150a75e9939e70a070cc1f  ./interop/transcripts/hissrv__cleanroom__slow_link.log
+89f1b8a22249162324bde8530eb0caf5472131bea0f5f43cf89e8f7bae1c605e  ./interop/transcripts/hissrv__cleanroom__slow_link.s2c.bin
+1e52dfe7bf6677208179664ab6af4a9e45309b7d8e102ec050c6b2806afccae8  ./interop/transcripts/hissrv__cleanroom__three_paths_one_conn.c2s.bin
+84f529a6edc20e0336986f1bb68a4483f1c6855fbb0f4a05411406bb247451ae  ./interop/transcripts/hissrv__cleanroom__three_paths_one_conn.hex.txt
+1cf01ea9dfc97cfac9f3c805b704ae5d39ec0d761fb0c27b7a848674087fec77  ./interop/transcripts/hissrv__cleanroom__three_paths_one_conn.log
+29140970c8b549a84d5816fe3bf35b7255a3bac0c8824378eb9ce3304337a9c2  ./interop/transcripts/hissrv__cleanroom__three_paths_one_conn.s2c.bin
+9b13b98603048c2dbc60489ec1f31a2145904316cca6a3262487d7f943242e64  ./interop/transcripts/hissrv__cleanroom__truncated_response.c2s.bin
+8f74718b24a8e6eeedba622ee0a9bb3366fe3539eea48e421f7304dfc3e6d26f  ./interop/transcripts/hissrv__cleanroom__truncated_response.hex.txt
+c2af3cc3a3c4f52804a686dc7fdb927a94da94cd82e6538c2d4d595e661cee74  ./interop/transcripts/hissrv__cleanroom__truncated_response.log
+c1a7dc49dbf805df889449fa09f0761ea696dcd4058dda152b058af4b04959ba  ./interop/transcripts/hissrv__cleanroom__truncated_response.s2c.bin
+5b0d2d4384be72a0a7aec4fcaba7387a726417ac3a5651d065d002c55cf32876  ./interop/transcripts/hissrv__cleanroom__unknown_frames_both_ways.c2s.bin
+0f9193774759703817792ce9d120d23e9568d1b66e422573175c9323bfb066a1  ./interop/transcripts/hissrv__cleanroom__unknown_frames_both_ways.hex.txt
+f07c3a51cd71258a3d5813848608aa80ec43d89fff84f90632fe7222f6c21ad3  ./interop/transcripts/hissrv__cleanroom__unknown_frames_both_ways.log
+b9a6b0a4ae3b49e546e191de4e4802a6990af355a1e7b9c26ce92ca19141a27b  ./interop/transcripts/hissrv__cleanroom__unknown_frames_both_ways.s2c.bin
+caf6e2360735142909c05c97b6e3dff9c4e4ddfc9aa17dcadebf16826a6b5b15  ./interop/transcripts/hissrv__his__corrupt_method_400.c2s.bin
+25c23bb66e45ad487d2b0ed3ef0b5a08d9bc3c135ac14dcc802629ac8549fccd  ./interop/transcripts/hissrv__his__corrupt_method_400.hex.txt
+af71564a26f4ae27163ddeb4fdbfb51a5f0a807077e7dd6c2d389f1951355e0d  ./interop/transcripts/hissrv__his__corrupt_method_400.log
+73e442f334fae7b4c3c335f015fa9c495b659378b09debc13c77d18ca1fec3e1  ./interop/transcripts/hissrv__his__corrupt_method_400.s2c.bin
+43508d9eaa2c78bbc07ad61e8b2b0e83ed7a1222e9db7fdf3aa60a9b47c9b454  ./interop/transcripts/hissrv__his__corrupt_preface.c2s.bin
+9f3d96551a72665fa6bf9edc0bc9891354098c761b6b9cce1ef5dc8a6dd175e3  ./interop/transcripts/hissrv__his__corrupt_preface.hex.txt
+569c50c3f0cf97d12fbe1970b5a04920793a49f96f5df079c5aa87a78e7c70d1  ./interop/transcripts/hissrv__his__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/hissrv__his__corrupt_preface.s2c.bin
+0fc21fa36711ae3ce8e5133db2b014db2c50edf75a9cb13c1f3a33c9eb34caf8  ./interop/transcripts/hissrv__his__corrupt_response_length.c2s.bin
+fa4a7ca88c651fead7a1bdba9ebbb72187fbe4a6cb54cd7a8a91b6f54523e86a  ./interop/transcripts/hissrv__his__corrupt_response_length.hex.txt
+894deca14c32d73a15da1a45ff949d6c1a00b9f1c2c5c6b91e753ccef4747f1e  ./interop/transcripts/hissrv__his__corrupt_response_length.log
+700161ccaec51f206be59494121d5b708e39259bb7e9c6037d4966b556dd8a66  ./interop/transcripts/hissrv__his__corrupt_response_length.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/hissrv__his__get_blob.c2s.bin
+7780fb61a80d560a110810a640474d0419ca74873e148907e448f0e80e4dbc2f  ./interop/transcripts/hissrv__his__get_blob.hex.txt
+216891e7fb0da20114cf6a9078140a340055bfd9016f53d7b17264e19d1c6b03  ./interop/transcripts/hissrv__his__get_blob.log
+1c2429e3a62584c4a43d95f100d15bb88ab2dea0ce01324b5801d14a9e5f379a  ./interop/transcripts/hissrv__his__get_blob.s2c.bin
+1cdfc1f6b5218ef359811dc6cd53d3b9fe39840083c97afd24642bb97bba3faf  ./interop/transcripts/hissrv__his__missing_404.c2s.bin
+b15f9b877c08206bb3d9fbf7eb5bb45d89f4b880a98f5940da6edc9d11f230be  ./interop/transcripts/hissrv__his__missing_404.hex.txt
+472e789cb1c32ffa6439d1464f9b422d859dcd9168b60cc96526d8a969def110  ./interop/transcripts/hissrv__his__missing_404.log
+4be8b9757c66e0c0517f586036ca5d95b35a342bc3e22be691255e4f2e891d07  ./interop/transcripts/hissrv__his__missing_404.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/hissrv__his__slow_link.c2s.bin
+bb5db2cebf20de5f96bfdc3db74b1d7a0505f650d6b2f6a85cbb94856fd61be7  ./interop/transcripts/hissrv__his__slow_link.hex.txt
+5531a0e3e717c555e0a4d92f9460528060b539f8e50cdd21b8f32ae2c1bf812f  ./interop/transcripts/hissrv__his__slow_link.log
+df0dbe86250fde42c179e3895b26b7daa2a53617868d22316defb7e8b98f4396  ./interop/transcripts/hissrv__his__slow_link.s2c.bin
+5497ab52ed56b14c2098b1de332e78ac3397fcf686afde9f982ef135748362ee  ./interop/transcripts/hissrv__his__three_paths_one_conn.c2s.bin
+3704c361c261404a807f475b9ba6bbc0c694c76a8a72b4aae6815476da9b891f  ./interop/transcripts/hissrv__his__three_paths_one_conn.hex.txt
+4cc2c69d4ae03e021e5059fbcfa2644740e1c10721098976c28c62581a00dc74  ./interop/transcripts/hissrv__his__three_paths_one_conn.log
+b57824ef95072a23ef4d9dce82f0fd9acb8fafd75f26497d2301226420677830  ./interop/transcripts/hissrv__his__three_paths_one_conn.s2c.bin
+e4126b6dd7b6be1e895f8feda3d38fcfde735b32265024e854364f7ab229e0b2  ./interop/transcripts/hissrv__his__truncated_response.c2s.bin
+731f9838331129f0e3fdad293e131512e4717cae480191fe6e2b50ed9337dc65  ./interop/transcripts/hissrv__his__truncated_response.hex.txt
+6efc0491c57bc8cd34262b58ed4dad46372c67a010e9111d5b2297d29946a543  ./interop/transcripts/hissrv__his__truncated_response.log
+072b0f0948bca97ae610778d7f3e0a65e5dae3a97f85144edaf3e304061ecffc  ./interop/transcripts/hissrv__his__truncated_response.s2c.bin
+076a7556cbf98182b22e39de32f230eb5530e4e8d766bc811392907977db03c0  ./interop/transcripts/hissrv__his__unknown_frames_both_ways.c2s.bin
+ab4ab0b6847b0a299301602ceaff3d7c905a8933bb2d6fc494f44c23d359f64b  ./interop/transcripts/hissrv__his__unknown_frames_both_ways.hex.txt
+aa10beb93388441df751fcbddd21bbbcad6f655e94d6b1b6de32290d55db6c73  ./interop/transcripts/hissrv__his__unknown_frames_both_ways.log
+3d3502564593e05faa6f1c9d90bdbb4129867953693e820a2e03c3ce5fa923a5  ./interop/transcripts/hissrv__his__unknown_frames_both_ways.s2c.bin
+9dbab0cdedc2c19e5836ffefd89d3dd7fd69061fc06950cef4c0fe6c967d0df6  ./interop/transcripts/hissrv__refcurl__corrupt_method_400.c2s.bin
+e4647a95d05f2e1e9a25da8702ddc17255194019f4d9053124b360b3e9e15ecf  ./interop/transcripts/hissrv__refcurl__corrupt_method_400.hex.txt
+120471577b625b86005c3abd112a73fb0264883f6b446656a0da502d0310ed43  ./interop/transcripts/hissrv__refcurl__corrupt_method_400.log
+7404053c55c214bcaabef55d41265b63006c1542d89ec80937a22a14152e9956  ./interop/transcripts/hissrv__refcurl__corrupt_method_400.s2c.bin
+cc87302637dad4ef523cb33121c6e784b2ab5590fcf2196e4ffa0eefa57c43f6  ./interop/transcripts/hissrv__refcurl__corrupt_preface.c2s.bin
+d4614a6933ba2b271f340669a6498a4c5608466e37e0e511851ab582434c39fe  ./interop/transcripts/hissrv__refcurl__corrupt_preface.hex.txt
+66c58c267e4eef8998077e1a3449c6f23d8793303c13c33d9e2e2f9eb81fd7d2  ./interop/transcripts/hissrv__refcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/hissrv__refcurl__corrupt_preface.s2c.bin
+74615ff999e28aefbfb46a1292a4ec1e075857689245024e8990cd76d8c94c70  ./interop/transcripts/hissrv__refcurl__corrupt_response_length.c2s.bin
+b198315a5bd71a2c0959a07e47e8e574d48493bd2e5e94afd903e30c4808e10e  ./interop/transcripts/hissrv__refcurl__corrupt_response_length.hex.txt
+79c2cc23ebff2a83a6a73141a00c8f6b6f5413c6f9af38a2ee4eacbf70feea22  ./interop/transcripts/hissrv__refcurl__corrupt_response_length.log
+23efd70b5b29936f707042a05b74c26e040cef7894d1a04de03ae9af397b8f07  ./interop/transcripts/hissrv__refcurl__corrupt_response_length.s2c.bin
+f5a8facc365dec60bc40617b41405648527b4359ad2ef61275a1046bb1c294be  ./interop/transcripts/hissrv__refcurl__get_blob.c2s.bin
+7a64249601f6dfce351f0786c48b7a039bf4133497f7ee30075202b860e13c1c  ./interop/transcripts/hissrv__refcurl__get_blob.hex.txt
+eda83ffc02e81898866a553b7f5cf3afc98279da0224942aac14983a932db496  ./interop/transcripts/hissrv__refcurl__get_blob.log
+e6c58b3b0c11481cab56c998424e0f72e8a2ad811ab666bb3823d58e6d445aaf  ./interop/transcripts/hissrv__refcurl__get_blob.s2c.bin
+8a9b2f197b4eb1dcb932443f3d365464a8ff6667b14f5e144d86ff50be4f8c6b  ./interop/transcripts/hissrv__refcurl__head.c2s.bin
+4270ba1ee8fe454ab3626ee1d921d91d8a91abfbce370871b931ee6130f51a4c  ./interop/transcripts/hissrv__refcurl__head.hex.txt
+cd269516d1ce58acb88811a64e219675dcfb15eea5a73e52717dbd8cc1b541b7  ./interop/transcripts/hissrv__refcurl__head.log
+1c4c4d249cb5d67e421a898a183af29a19c331b91496d2c98aaed5883286c6c8  ./interop/transcripts/hissrv__refcurl__head.s2c.bin
+f311ef24bb30f792711aac55b9bd5e22656c3e869ea4fd8fe538f854c8f36b6d  ./interop/transcripts/hissrv__refcurl__missing_404.c2s.bin
+2d8b502ce4b8f9e7e1bbe6dc8069328631473a4cb7a53206f9a60b6a1cbdb563  ./interop/transcripts/hissrv__refcurl__missing_404.hex.txt
+437085a2c1538a6d82d9b7f567c03fb167e5886f07b8ac4d7f17a78b1ca5bc4f  ./interop/transcripts/hissrv__refcurl__missing_404.log
+5875b28c29b5f05a6364b228ec78fa0d2e91aa96287cded2ba369903516a464e  ./interop/transcripts/hissrv__refcurl__missing_404.s2c.bin
+022b614179ff7f3c0bf03f7fafec13a57d2e6a3252da527fbed6f1d51ca2b0d6  ./interop/transcripts/hissrv__refcurl__slow_link.c2s.bin
+3d7f663adfe6d1a4a449bc2ef8a73c8d1885b7fcae5cdf5da351a61bd1c3ceb4  ./interop/transcripts/hissrv__refcurl__slow_link.hex.txt
+e06f7385525578de3edf29d0f1f0514d67ce9c55d4b25c36d53cddc424d81ab5  ./interop/transcripts/hissrv__refcurl__slow_link.log
+a4a237e7163b39dbbff3e28c5b56dfe9f22ad0fac967def0e98c17852af0b078  ./interop/transcripts/hissrv__refcurl__slow_link.s2c.bin
+349ef8bd9c9be0bea7bc8197d9271d15446ee5ad77a989e4cdb0d91cdce2c39c  ./interop/transcripts/hissrv__refcurl__three_paths_one_conn.c2s.bin
+35f8e8b9d6747317fdf254be2375c9eda6a6197a5e3dbe8a69d7eecee1a9b75b  ./interop/transcripts/hissrv__refcurl__three_paths_one_conn.hex.txt
+365d8c49c86890b5f2cf27d6a9f422dd6c80ae66ee5097c95b939bba4ade660e  ./interop/transcripts/hissrv__refcurl__three_paths_one_conn.log
+f5c77fbc139eb619c0557b9b11658b0d6f11bfb8c302aadb48f4bc16d682ef76  ./interop/transcripts/hissrv__refcurl__three_paths_one_conn.s2c.bin
+14e009ef913c48b976591577bf04f2c08cdfc22b823917087fdb5952ca580fc1  ./interop/transcripts/hissrv__refcurl__truncated_response.c2s.bin
+923c22c623ae312bfc5afcb7a0c63415059dc28a0df62fdba4ccc3f8f8b98396  ./interop/transcripts/hissrv__refcurl__truncated_response.hex.txt
+7c27ea29e68de2f1e85c2158d02f710b31e89bf29d1c8b7e673c3c46ccf60aec  ./interop/transcripts/hissrv__refcurl__truncated_response.log
+22663c503661b8fb4f9138ef7f1131ff8dbd36dbab5cd2b98af6e17bd6acdeb3  ./interop/transcripts/hissrv__refcurl__truncated_response.s2c.bin
+aad7ffc47aeaaaf0caf267152d05c75a260ed0dbb2d4bec6fa6604fabe94db06  ./interop/transcripts/hissrv__refcurl__unknown_frames_both_ways.c2s.bin
+06dfbd35219b80e750471351783faafd82317e4c2f998fbfe52102b57e49ee7b  ./interop/transcripts/hissrv__refcurl__unknown_frames_both_ways.hex.txt
+f0fbef82341a249f7bc966a7d8904d8bbce7db6e660e3c5c5c14de0b8adcf171  ./interop/transcripts/hissrv__refcurl__unknown_frames_both_ways.log
+6efe1ef6f5958817522ae4e51d4f91772c0000585f2ae06b83694cf1bce76441  ./interop/transcripts/hissrv__refcurl__unknown_frames_both_ways.s2c.bin
+7632ffd54354e5ded2c1bae0c3e7d93d4055304241cd7d8b0a80e4a6c0ce55a2  ./interop/transcripts/mine__bcurl__corrupt_method_400.c2s.bin
+066750ecd6aa0d4cc4b52b072da51c6c55401c08f14c175060b3feb10f5293af  ./interop/transcripts/mine__bcurl__corrupt_method_400.hex.txt
+73f357f5b97eaed708d7942abd57bb617b8e59bbb551e5d67f146f8690935cb9  ./interop/transcripts/mine__bcurl__corrupt_method_400.log
+09e66262c75503493377028631a0e6e92b0ccb54ccb6352ba76f967f745aeba6  ./interop/transcripts/mine__bcurl__corrupt_method_400.s2c.bin
+ed9feda1c77afc426e727a009feb308d4f654a84698e7f467b243891488e6d6b  ./interop/transcripts/mine__bcurl__corrupt_preface.c2s.bin
+d65aadfde9f8c6e30f137a0dbebfde0d41b1bc1fc532cb25d7219e8f757db473  ./interop/transcripts/mine__bcurl__corrupt_preface.hex.txt
+a5b20ad1ec0a75cde01441409efe3833635e649c95988a9be6ab46b26b8db9f4  ./interop/transcripts/mine__bcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/mine__bcurl__corrupt_preface.s2c.bin
+43806bc42d4a9a37760e613054cb948efd09c3709539f0713d2ecfd7775d47e3  ./interop/transcripts/mine__bcurl__corrupt_response_length.c2s.bin
+8f418b0b24a7719dbdf5c2c0ba8b338f9c7d74de8fed0fc6d1c6caef57160fae  ./interop/transcripts/mine__bcurl__corrupt_response_length.hex.txt
+d0c4e0e85893cc94706c45d9a6e67634c9ee78a71694b1739aee3788df10e345  ./interop/transcripts/mine__bcurl__corrupt_response_length.log
+90db3decee8782c603e3bd0ee75641e5236b2ec3ddc3b2725f19761bcd42dc4e  ./interop/transcripts/mine__bcurl__corrupt_response_length.s2c.bin
+4bbeb9da5868b6810a6f7a17dbd36ffcc569db9f03d7a5cdcacabf635960e5e6  ./interop/transcripts/mine__bcurl__get_blob.c2s.bin
+d6c2ae5b18cb9bb0aa09fe871c16bad0649df333258d872769dd135760792881  ./interop/transcripts/mine__bcurl__get_blob.hex.txt
+8b8217f5bc6de67c4739e62e52fac3ce08f2980afd7b36659ecdef74a64acee0  ./interop/transcripts/mine__bcurl__get_blob.log
+8d82e08a8c674b21909587fab9aac159613c70ec69c2ea33c268dfdc29b7ff3f  ./interop/transcripts/mine__bcurl__get_blob.s2c.bin
+cf73890ad616a7744c18e97fb7a949c4bda90a16e04b9f700eae2dee36da8ba4  ./interop/transcripts/mine__bcurl__head.c2s.bin
+5e2af1e077418e8448419c86e07c07b5595f3802784f93d2b07ba70844c4e378  ./interop/transcripts/mine__bcurl__head.hex.txt
+101d16ec1bfbe7ce2f816456d51262d2820313a44e7b703e4d34477133613f18  ./interop/transcripts/mine__bcurl__head.log
+0dfdc0e0ae01fd1c65153f3e9bf6efc1a0376a9b8ba806eaa1ce3d7a88e6cccc  ./interop/transcripts/mine__bcurl__head.s2c.bin
+614b570d503645702fd93563b0091f1912bb9af16040a48c4d8b255def9fe02c  ./interop/transcripts/mine__bcurl__missing_404.c2s.bin
+0b406963a220338423ec6770f02ab93222f88d2537888071224757993940edcf  ./interop/transcripts/mine__bcurl__missing_404.hex.txt
+60cd75802fde24b4dafa99764bb150c2f28bdc35c007374ebbb1da64af576552  ./interop/transcripts/mine__bcurl__missing_404.log
+f7e5386138c72a92d6921043340b775309c16e000e5d7ff8a71714151bf8b5bd  ./interop/transcripts/mine__bcurl__missing_404.s2c.bin
+96864579675331d19a5a9e15562e48f0a9c7af9130cc93b2bf66e44faf532596  ./interop/transcripts/mine__bcurl__slow_link.c2s.bin
+95bff451836b1dea49238b5222b62469593425ff7a367dc6b458cb8cf2891181  ./interop/transcripts/mine__bcurl__slow_link.hex.txt
+48037328f65796335ceed12ca48b12806be2bd95246d3d73cfb73ba14af6d329  ./interop/transcripts/mine__bcurl__slow_link.log
+1bca5eaf7c1b26801cb083135c6cdafcf99dbe71225dfc027335598d09f54409  ./interop/transcripts/mine__bcurl__slow_link.s2c.bin
+27d998736785fe3bee7247804e6636465dc11045be2e70900dcc3ec385a90663  ./interop/transcripts/mine__bcurl__three_paths_one_conn.c2s.bin
+0aaa61a18befdb8a6544669ba4730b6ebd5981aef879d96b976fa0c409aef2e2  ./interop/transcripts/mine__bcurl__three_paths_one_conn.hex.txt
+6bb236f8608064ee69d855d1ce8dab55aef67c9cfdff3d11bae525f198bdff68  ./interop/transcripts/mine__bcurl__three_paths_one_conn.log
+b1e95f7150a16ccb762d914e4a6b296b434156e58b9b39a5b7c7e5d5845d372b  ./interop/transcripts/mine__bcurl__three_paths_one_conn.s2c.bin
+82e477f65204429d253da4925bcc381b39c80b06604d8f5fefa9b4b148720edf  ./interop/transcripts/mine__bcurl__truncated_response.c2s.bin
+2ce50b2d6aa1c8458865b0b6e0a97e2c03cffbcd60fc4615a7b24dfad62d5d4b  ./interop/transcripts/mine__bcurl__truncated_response.hex.txt
+9cbf40d35dc3449822484c950e2de1140ef77833caf02304bc291baf8fa2e84b  ./interop/transcripts/mine__bcurl__truncated_response.log
+5fd0bbbe916fc81f12d56a5dc80ac6f7574f0d6ca9142bfd03d6fb447f79d4b8  ./interop/transcripts/mine__bcurl__truncated_response.s2c.bin
+6cfd014a884553f6211f0a7e1f24b0802deb814ceec8299ea7e5f2c5c16f6cd5  ./interop/transcripts/mine__bcurl__unknown_frames_both_ways.c2s.bin
+3f19d1f202e52034d5334f28ab220614841dc5bbab2bdde3188fe38f9c49de68  ./interop/transcripts/mine__bcurl__unknown_frames_both_ways.hex.txt
+9d76b2736f14879200a762424665c752f8768fedd2648d41ea1d5ccfccc74bbf  ./interop/transcripts/mine__bcurl__unknown_frames_both_ways.log
+efe229a8b9c1b4f1050105961f0bc6dbb8564e90eff95479fd180e23797c8b72  ./interop/transcripts/mine__bcurl__unknown_frames_both_ways.s2c.bin
+c461d57581d0be7aac8baf73aafe4203c95a1a0941b7e7e52754790df8c7862c  ./interop/transcripts/mine__cleanroom__corrupt_method_400.c2s.bin
+41ec6baf2f0e54b6ee9e7f61fef05563ff81e7bf33a9a197914f2a59b9f3cfa6  ./interop/transcripts/mine__cleanroom__corrupt_method_400.hex.txt
+f184d892c86ae615d2ce2595a1db2e1d4194a400b3f9e59b146adaf084d4e08c  ./interop/transcripts/mine__cleanroom__corrupt_method_400.log
+96a27c75fbab9659fd7340830ecf66dab9ad91b5514ed64884f5412f80ec6bb0  ./interop/transcripts/mine__cleanroom__corrupt_method_400.s2c.bin
+2abe2c41abd6e230c295938b78847c7bf23839fb5acd36755448f8de08598016  ./interop/transcripts/mine__cleanroom__corrupt_preface.c2s.bin
+7587d8ae94773ee761919549b00576a7f92c719e7b1faeebc34f8423fcf7d0ae  ./interop/transcripts/mine__cleanroom__corrupt_preface.hex.txt
+0b81edc06d9be690b9d519fcffbeb9f213bfdbb0b56e7a95afc466ff69bb14f7  ./interop/transcripts/mine__cleanroom__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/mine__cleanroom__corrupt_preface.s2c.bin
+33aad6a65079a6d9e1f4196d5a7fbb0633cf34dd60c732747ffd1ca4816da06a  ./interop/transcripts/mine__cleanroom__corrupt_response_length.c2s.bin
+64745e21213de08cf83faad7284d605847ee6ba9647997d4545647aa1abb3547  ./interop/transcripts/mine__cleanroom__corrupt_response_length.hex.txt
+b73db7ee34b3c726e9c26d70f1b0852ce88f8c17763281e8790c3726328b1dc6  ./interop/transcripts/mine__cleanroom__corrupt_response_length.log
+30c649dc66af1fc692648663566b70c9de08a6ec513afddb7c6f82a69643a23a  ./interop/transcripts/mine__cleanroom__corrupt_response_length.s2c.bin
+ae1f9471ef6a8b57062cf4670f1b49a0a00f1295f1448c511a2cc4e7838e9cec  ./interop/transcripts/mine__cleanroom__get_blob.c2s.bin
+3b501149eb22f252557fe63201bccaacef0d37a418145610c82f3d25f50feae4  ./interop/transcripts/mine__cleanroom__get_blob.hex.txt
+a99d261b5c25e33ab3385e5ffba47be6ced5c72067adf56adb29c07173aff864  ./interop/transcripts/mine__cleanroom__get_blob.log
+283e66d64bb99842815095f045a15a333b8ba2889e4a7b2b88155ff6af79522e  ./interop/transcripts/mine__cleanroom__get_blob.s2c.bin
+f097489a5da53e17ada6db82b534cac0c203d104cf0b84a2b24bdf6dc82c6e1f  ./interop/transcripts/mine__cleanroom__head.c2s.bin
+88a7809bf4303e11d4759fb36933a34f0f37cc9731ce8f25d4a003678e5f33e8  ./interop/transcripts/mine__cleanroom__head.hex.txt
+bcc8d9f81a455bd78c545e4db413fee6fa5b7f5a44a8598425ae7164cece3348  ./interop/transcripts/mine__cleanroom__head.log
+740b37b720679e35b9ff73a53557e47f259875708acfc6d68d7063bcdbadde8c  ./interop/transcripts/mine__cleanroom__head.s2c.bin
+20f572abe5e9d122d4093bc1963daf1d269cfd8eb48a7b6b09213054c105efbb  ./interop/transcripts/mine__cleanroom__missing_404.c2s.bin
+59df8095e21ea27f9ffb3b0c1b75c5d1ca36fc248c07eb17b37f6e8f629f8a39  ./interop/transcripts/mine__cleanroom__missing_404.hex.txt
+9599fdb3dc64b8e7dac200594d43e2489764273186d360192fa26d8536a0fde9  ./interop/transcripts/mine__cleanroom__missing_404.log
+ab42e7f5e8bd49a7bc9b363ed6a9359b95949c77c5c17913e50e7aec91357438  ./interop/transcripts/mine__cleanroom__missing_404.s2c.bin
+ad055a4e0d9c45ad29f9dfed68d9789b9b5db50aa9ae21c1b84c96b6828ff525  ./interop/transcripts/mine__cleanroom__slow_link.c2s.bin
+4aad8e580f07f4fad6dd48e7d83562c058724e33964e2c8b75e4a2c94befc993  ./interop/transcripts/mine__cleanroom__slow_link.hex.txt
+c61e1bad11e0b8d36573d2fb52b0533785e96c409fa9bffeecc7cd7db1ff8298  ./interop/transcripts/mine__cleanroom__slow_link.log
+13621f3432c782c238432b4f9e740eb210a43bb6691d9cc54b10fd7b52ecf28c  ./interop/transcripts/mine__cleanroom__slow_link.s2c.bin
+319a0aa5c26301db928f17a401461133dafd38704d96a339aab330d56fda6432  ./interop/transcripts/mine__cleanroom__three_paths_one_conn.c2s.bin
+6b6ac199d9d220d6e4333dd51c4c7cfafe68babc9e6b5560168f9dec359eee5b  ./interop/transcripts/mine__cleanroom__three_paths_one_conn.hex.txt
+762c1e77da80abdb81702c511ef4418dcc9a70e9fd4a319296e4d54fc061d25b  ./interop/transcripts/mine__cleanroom__three_paths_one_conn.log
+e027de65b9c8572eb8d936627831ff431cb535f8158b65b30d9884458498fc92  ./interop/transcripts/mine__cleanroom__three_paths_one_conn.s2c.bin
+095ae480d27d119473246da9019bc10974c5cfe97bbc6cd40565d70e8632067b  ./interop/transcripts/mine__cleanroom__truncated_response.c2s.bin
+7f219ae7e50c0e15888802123e5f5346ce8858265c217049ad29a62a35fbca84  ./interop/transcripts/mine__cleanroom__truncated_response.hex.txt
+8a24bf6985a7c540fe894119ada9a25a125517c505d35ac5e53b9d6a0f63fa8c  ./interop/transcripts/mine__cleanroom__truncated_response.log
+695fa7e97264b123d2241dfdb7311077d61cf2a799ee9d97cb51d8c7d55aed26  ./interop/transcripts/mine__cleanroom__truncated_response.s2c.bin
+cd9dfd98c86244daec3faec4a5c5ae361158d5a3bbc9bd13b249bafd933fab89  ./interop/transcripts/mine__cleanroom__unknown_frames_both_ways.c2s.bin
+c04c47310bed45d88e4eefaf75ab3b1df1005ac9da8a72fe5ecc68abfdd217f9  ./interop/transcripts/mine__cleanroom__unknown_frames_both_ways.hex.txt
+c5258e4f3923b5645e1769c6ca10d449cd03360118acca339ba8fba221deb6c1  ./interop/transcripts/mine__cleanroom__unknown_frames_both_ways.log
+02baec5c92cf0531131b77b474de6498986db78d8c96c904b786fb3e121f4d55  ./interop/transcripts/mine__cleanroom__unknown_frames_both_ways.s2c.bin
+caf6e2360735142909c05c97b6e3dff9c4e4ddfc9aa17dcadebf16826a6b5b15  ./interop/transcripts/mine__his__corrupt_method_400.c2s.bin
+df7f04adb2c0a4ef97bd2dbe148cd2572ed9607728563efaf4802d57aabd4476  ./interop/transcripts/mine__his__corrupt_method_400.hex.txt
+be9c73865cb2ad130687465649fefaa9aa73391023cddeeae7c5387345b5f1ba  ./interop/transcripts/mine__his__corrupt_method_400.log
+38284ef6f681fbd0f8756fd6b576ad08fe09c05b109a90970bccf5b2b448f47e  ./interop/transcripts/mine__his__corrupt_method_400.s2c.bin
+43508d9eaa2c78bbc07ad61e8b2b0e83ed7a1222e9db7fdf3aa60a9b47c9b454  ./interop/transcripts/mine__his__corrupt_preface.c2s.bin
+9f3d96551a72665fa6bf9edc0bc9891354098c761b6b9cce1ef5dc8a6dd175e3  ./interop/transcripts/mine__his__corrupt_preface.hex.txt
+3cce22f6f7fdc6d5dd993269a6767f1a31c34225cc1e7caa75ee44006521cab3  ./interop/transcripts/mine__his__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/mine__his__corrupt_preface.s2c.bin
+0fc21fa36711ae3ce8e5133db2b014db2c50edf75a9cb13c1f3a33c9eb34caf8  ./interop/transcripts/mine__his__corrupt_response_length.c2s.bin
+dea3a4a8f47ad05efe16d9ab8a3f580710b4a7b22644070612c5c6bc199c9718  ./interop/transcripts/mine__his__corrupt_response_length.hex.txt
+b7462154e5e4bf34b26cf21d7efbe2e8f44a04cf05379015763bc766914df325  ./interop/transcripts/mine__his__corrupt_response_length.log
+c09bd2d8c4e9cca4cc8829cfdfff963805208666a9859dfa6df1a78748995300  ./interop/transcripts/mine__his__corrupt_response_length.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/mine__his__get_blob.c2s.bin
+7361d2773ccb9cbf90d210396c64b334b4103b2098c8a07f997adc58bf70e894  ./interop/transcripts/mine__his__get_blob.hex.txt
+8d3c9a73f5396a0afe35000f8b28966f28e031720d667042392e56d425dbe0fb  ./interop/transcripts/mine__his__get_blob.log
+b05777749472e5a8962557f9e202d77873da4a4555e8fe291f5ffacda67fba3b  ./interop/transcripts/mine__his__get_blob.s2c.bin
+1cdfc1f6b5218ef359811dc6cd53d3b9fe39840083c97afd24642bb97bba3faf  ./interop/transcripts/mine__his__missing_404.c2s.bin
+db827500bb08311eccc9105ef95edb331511137f43b3c6323f9ba99700a1688f  ./interop/transcripts/mine__his__missing_404.hex.txt
+7b229aeeb98298fc08ff8677a0b715382a2a84432916e5671a71e098a5ca853d  ./interop/transcripts/mine__his__missing_404.log
+13ce3bec611640d93fb1d417abb312aa72352f152c79925153700c221577348d  ./interop/transcripts/mine__his__missing_404.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/mine__his__slow_link.c2s.bin
+8d281c33ce8dae1e43b9b137bfaa30b777064c633ebc5d74e5e77d4852143c2b  ./interop/transcripts/mine__his__slow_link.hex.txt
+78431ef4ed7068ed1d5e6548e2453fb2d2c89d855fe4577be9db3afa5090123f  ./interop/transcripts/mine__his__slow_link.log
+237a7de7e303703f7ab7bc494f6315fe2390bed471c48a1aad72b2103f2bf4bb  ./interop/transcripts/mine__his__slow_link.s2c.bin
+5497ab52ed56b14c2098b1de332e78ac3397fcf686afde9f982ef135748362ee  ./interop/transcripts/mine__his__three_paths_one_conn.c2s.bin
+1af05e4cb18904db8f91c518c6ac391343699c306e61b790c7140b0ffa262b60  ./interop/transcripts/mine__his__three_paths_one_conn.hex.txt
+77b574fd68842a82fa4bd3645dbd88538ac802835de66908af41bd8d628b5cff  ./interop/transcripts/mine__his__three_paths_one_conn.log
+becc05cdf25087dc67d860e1c744b8c3cebb54258a889aae8dd20d6ca991baaf  ./interop/transcripts/mine__his__three_paths_one_conn.s2c.bin
+e4126b6dd7b6be1e895f8feda3d38fcfde735b32265024e854364f7ab229e0b2  ./interop/transcripts/mine__his__truncated_response.c2s.bin
+631885116e3a717750d6b8f7a816cf66db228e792c6fdabf36bfd7038ae3737a  ./interop/transcripts/mine__his__truncated_response.hex.txt
+34a75518cd5faa28fd9b72b688bc8efa8f0d8aab84f4a6074df4ac09a6c9715e  ./interop/transcripts/mine__his__truncated_response.log
+6a3c1bf302ad350bf1280b306fec7f9c82d5d528e6cbb4f0c7380a0ca1d95ed0  ./interop/transcripts/mine__his__truncated_response.s2c.bin
+076a7556cbf98182b22e39de32f230eb5530e4e8d766bc811392907977db03c0  ./interop/transcripts/mine__his__unknown_frames_both_ways.c2s.bin
+19c8d7c1641aa8303e05ea395d149037ebec2bc8481ce653f35660294fcc609c  ./interop/transcripts/mine__his__unknown_frames_both_ways.hex.txt
+69fbbcba0f4356eec850caa2c761c42b43d6644c7512d9ac6ca7ae1fa2fe70d6  ./interop/transcripts/mine__his__unknown_frames_both_ways.log
+cf7b0f60dfc6a38098aa39896e5f5fd06a99070e61915658604ad283d8b17e81  ./interop/transcripts/mine__his__unknown_frames_both_ways.s2c.bin
+982a3119a439e2c457113a304ceee331586ea685378f74f9afa386d1b72286ee  ./interop/transcripts/mine__refcurl__corrupt_method_400.c2s.bin
+63c9c38e6d573e183b160309968204dfecb85516ea8aff027aaeedbb96befe64  ./interop/transcripts/mine__refcurl__corrupt_method_400.hex.txt
+eefc08a60c8e3ef5a7d7751994e6e1afc0cb5e3c56cdee57b1a3465d3ed052b2  ./interop/transcripts/mine__refcurl__corrupt_method_400.log
+c53a85d5d8ef1a80b84c15166656bd52c7299de34026b8ce7f9f05cdc2f428d8  ./interop/transcripts/mine__refcurl__corrupt_method_400.s2c.bin
+0aa6a04dfc6889cb8690f14e415f37dac6bec6c0a92c5fa740b269708eacd94a  ./interop/transcripts/mine__refcurl__corrupt_preface.c2s.bin
+5d75188c595e227b95d93448184738aa804ed60fee3645c9ba0918d245f11117  ./interop/transcripts/mine__refcurl__corrupt_preface.hex.txt
+7467f94cf666199726a09aa54d4f9b7bab9426c52852fcce61024ccfd537a02d  ./interop/transcripts/mine__refcurl__corrupt_preface.log
+564e72d8fba16b533bbd4cb11c4ba9cb806d1f8be35feba459f951bf4e085846  ./interop/transcripts/mine__refcurl__corrupt_preface.s2c.bin
+812593d0e57d6aaa1f1df68f89e30b321e117ca185e177509b2cd4a1b9b9a408  ./interop/transcripts/mine__refcurl__corrupt_response_length.c2s.bin
+95d1e8119495ed8d04c6f9cb0b53089ffd5c0bccf6c70c6c98019f0bcbbd95f6  ./interop/transcripts/mine__refcurl__corrupt_response_length.hex.txt
+28c8ac4e147af3cdcec53f3e97646b0c0d56a9df95a7cf20b11d5fbe1147b2a2  ./interop/transcripts/mine__refcurl__corrupt_response_length.log
+e7798a788fd05223845510807e7d39113efb535246eaefb32b02c625898c25e1  ./interop/transcripts/mine__refcurl__corrupt_response_length.s2c.bin
+bdebb4e6750c2ae6a2a64ae7f2eaf9a5747a6249924b66a2a16394bfbf07bd99  ./interop/transcripts/mine__refcurl__get_blob.c2s.bin
+f1dd3e7cfb32e0a5cc887ef0d257fbc12dc80d4d985486fc93e7dca7b316bc59  ./interop/transcripts/mine__refcurl__get_blob.hex.txt
+f4c29bd526c2388553471277c3661c174fbee773cb8efb6eb793dfea5b656e70  ./interop/transcripts/mine__refcurl__get_blob.log
+237a7de7e303703f7ab7bc494f6315fe2390bed471c48a1aad72b2103f2bf4bb  ./interop/transcripts/mine__refcurl__get_blob.s2c.bin
+f6f7a77cb7e1c0ad60763040044299ef661cfa25e92ca2ee89742350f37f79c9  ./interop/transcripts/mine__refcurl__head.c2s.bin
+e7ce1c09b618e76e846db1c80ccc360e8c00db8f2acc9d57d66f4985d356f18f  ./interop/transcripts/mine__refcurl__head.hex.txt
+5e6847d9183134722f86fc95afa6d83f393bb9704553f8ffc95213cc6ec64752  ./interop/transcripts/mine__refcurl__head.log
+6a8520c71424bb4c16d5771a50e6ee8e7a6f816d4349ce39c1cefbadeffa0f1d  ./interop/transcripts/mine__refcurl__head.s2c.bin
+67250d7848731d96e88d058b522ded671ade539fe270ec2d2c6140ddf7efdfb7  ./interop/transcripts/mine__refcurl__missing_404.c2s.bin
+0e351d674fe69279cdde49d5e02f9ae020414ad924637c136eda8ad95f7507b5  ./interop/transcripts/mine__refcurl__missing_404.hex.txt
+dda92a92a2a3843332bf57e168bf86c78385fdd23421a346fa299f247421e4cf  ./interop/transcripts/mine__refcurl__missing_404.log
+a4e22d51266f477f88e18fa458d452d88ed965d71e6c384ea7e9ab3c74efd772  ./interop/transcripts/mine__refcurl__missing_404.s2c.bin
+c60bf45bea966e24f1b347aaefaff1d586d55b2fd286b390b46d0ce0b59aca43  ./interop/transcripts/mine__refcurl__slow_link.c2s.bin
+ca57adf42cac38eee98e4124843644fd17fa8d508d00d4d183d4aecb37fb614f  ./interop/transcripts/mine__refcurl__slow_link.hex.txt
+8f3ff6ac6d5d6ec9eb2eef9058de9c6f9f3e06e59cf57e088c0950c9e3d99588  ./interop/transcripts/mine__refcurl__slow_link.log
+587175991204da345a4534f35089ced00269514ddda5cea638d5e6edee28fb98  ./interop/transcripts/mine__refcurl__slow_link.s2c.bin
+73a6ca4fd41ec422e059f08def60b0dd42eb3bcde5c84abff438442babbe0d64  ./interop/transcripts/mine__refcurl__three_paths_one_conn.c2s.bin
+2118a022177b8c8ceefe4c1c8b224169e87cce95d5201c0bc79dff2578c95f4a  ./interop/transcripts/mine__refcurl__three_paths_one_conn.hex.txt
+8974426039c6634973c4be118c153d98919616b0c730dc80be1b72316b21c144  ./interop/transcripts/mine__refcurl__three_paths_one_conn.log
+90900a9955529415637ad56f3ea0204933c205333d6e4777947f3120313ed8ef  ./interop/transcripts/mine__refcurl__three_paths_one_conn.s2c.bin
+4ead29a74dc4ccf11740c13b8f7d5f77c440f8f1e23aa3cdcf5ab6fb4fee031c  ./interop/transcripts/mine__refcurl__truncated_response.c2s.bin
+0b50c9963ec02d0044c4d7cc576c387afde9963194fe8cba49efda7011452438  ./interop/transcripts/mine__refcurl__truncated_response.hex.txt
+44c1672d0ad8f166eebdf3b9ca42df1479dca2259aef1058f5a9e6cad129580d  ./interop/transcripts/mine__refcurl__truncated_response.log
+eaa19fab583d1ec78bce9c62e3536f400d96cd60fc226832844652399730dcba  ./interop/transcripts/mine__refcurl__truncated_response.s2c.bin
+9609f4d2e7adc296d8bd8f1eac0aecfa4237f4a53c01a17fc9187ce58a62e0de  ./interop/transcripts/mine__refcurl__unknown_frames_both_ways.c2s.bin
+91a0655edea230c5a45f343d142be2bf78806dbe421463f5dfced483d9eb47e2  ./interop/transcripts/mine__refcurl__unknown_frames_both_ways.hex.txt
+3926f7b872d468ff8a6d128c660ccc5cc451421304269094e6ceded05d4326e5  ./interop/transcripts/mine__refcurl__unknown_frames_both_ways.log
+60fdd290fdb85bad415db86cf500f0be3246470350adb47eb063e1dd46603984  ./interop/transcripts/mine__refcurl__unknown_frames_both_ways.s2c.bin
+2ff6226ec75c16c0575560e3099c30c201a959029ebdd58c75a59ed576a4ddc9  ./interop/transcripts/ref__bcurl__corrupt_method_400.c2s.bin
+5ebdaba6a0f925ae5cdd8430825082da1b810e0ce1a792b85f74f32a2c0723fe  ./interop/transcripts/ref__bcurl__corrupt_method_400.hex.txt
+461358b643590c876b59feb663e6159845d714676fa461c10bada08e54d00508  ./interop/transcripts/ref__bcurl__corrupt_method_400.log
+937269725de1ae499d6f2eb5d80aa07cfc296dfcd85a37c3c16fa3897e079c4d  ./interop/transcripts/ref__bcurl__corrupt_method_400.s2c.bin
+295678761c55d866765a8dcc177dde04cabe21755cbd09bee0d7cb862cf491e4  ./interop/transcripts/ref__bcurl__corrupt_preface.c2s.bin
+13abc7f0167bf44ed1d85a9bc3c1e401b64c4bbc86bb6ffe15d08bc60ed6d74e  ./interop/transcripts/ref__bcurl__corrupt_preface.hex.txt
+e0e180df564d27c817a320f69e033ea0e23c243277a6f2e77be22aea6619c117  ./interop/transcripts/ref__bcurl__corrupt_preface.log
+047a85fc7262a9261d0b7f5c6f3a9592e3559d238c79e6bee4acf2c8643a6584  ./interop/transcripts/ref__bcurl__corrupt_preface.s2c.bin
+91c8672b446d56aa9f56334e865e98607d5f172b75abce0dd5606bd2cc6fdaf4  ./interop/transcripts/ref__bcurl__corrupt_response_length.c2s.bin
+501f66a075fcac0f845aff8bc14d9bbad8ebcd84ba23aae23195f3d3b8f72269  ./interop/transcripts/ref__bcurl__corrupt_response_length.hex.txt
+80b39f51c82ea002cc3602c889ff18e3691713b04012290194f516dce6ff139c  ./interop/transcripts/ref__bcurl__corrupt_response_length.log
+b543103153241d41d1bbd80d0d8ff4f1c98131f36e324e6b160165e77a6aa4dd  ./interop/transcripts/ref__bcurl__corrupt_response_length.s2c.bin
+9be886ff2d4db82f2f4b621e111e2011d1d0d96647a708afd3cd871d3f7d02ed  ./interop/transcripts/ref__bcurl__get_blob.c2s.bin
+be9b5b2e7ee6cd677acb3ead559fab989084d92cae46db118ab5be249873d3f5  ./interop/transcripts/ref__bcurl__get_blob.hex.txt
+81022d14c2feeadfcf60071e2829ca670c0fbfc9dfc238ba20c2bebc868be12e  ./interop/transcripts/ref__bcurl__get_blob.log
+98de64fd63885fbf1ed5180b8ac4248beed1ce1fed096bc6020be131dc51b08d  ./interop/transcripts/ref__bcurl__get_blob.s2c.bin
+17da3c4c3fd9edee473b7d60b33ea1b2f401abcf496958a4077b392a3c83e33f  ./interop/transcripts/ref__bcurl__head.c2s.bin
+3dfc91d201976fc92a72a9828b1c6717eecd502c1796d1e802f35764ce038ea2  ./interop/transcripts/ref__bcurl__head.hex.txt
+5aa6358779a72ecfd87e626f51124162183e069d267d5915772f371bdeb2e1ce  ./interop/transcripts/ref__bcurl__head.log
+4d41f68fb3adbe8283fbb6fe884f3106eb84493e28d7ce3dafdeb1eba21521fd  ./interop/transcripts/ref__bcurl__head.s2c.bin
+22bea242cebf64bfb9aaa13fa6cfe2ebfc246780fdbc0a0bf522d02cd94e2558  ./interop/transcripts/ref__bcurl__missing_404.c2s.bin
+9dc658d95b4cb0cba1cd15e6a9b1675ce1cfa4b67ddb102a007be1a2dc1d394d  ./interop/transcripts/ref__bcurl__missing_404.hex.txt
+5555dcfd8ab82f6f8901a5ff9491fca4d0a37d8804d44a1078e7a8fb7f295f8f  ./interop/transcripts/ref__bcurl__missing_404.log
+5c95b99de69f1081bdf1c3ebfb29fb30db30d4770017d97e222327290ce4a779  ./interop/transcripts/ref__bcurl__missing_404.s2c.bin
+7c21e2debf4a664faae254a5d2e024a3e78285b5b4c3bcb44bf63eb8c2a100e6  ./interop/transcripts/ref__bcurl__slow_link.c2s.bin
+b4360686b35c4f1c7e496466ea3464448a8843c9bcc17e2003d7e7935fde043f  ./interop/transcripts/ref__bcurl__slow_link.hex.txt
+b64bb8f83fe60af3481fe192960ce5d1d3d95991aaabf633ec3bd5f2aa37c9e2  ./interop/transcripts/ref__bcurl__slow_link.log
+9ddc456076b857740cf36e2a01fd9410ae3ee526e574ea9469f6f2d7ecc1e712  ./interop/transcripts/ref__bcurl__slow_link.s2c.bin
+4bf580f0005bc7d77cb336366e500506de32e1502eb26b3dc46804c3f371f4b8  ./interop/transcripts/ref__bcurl__three_paths_one_conn.c2s.bin
+e1a4bf649d55085b3a95e22cbf955990ba0016a16aa71b88f04f72e1113b26f6  ./interop/transcripts/ref__bcurl__three_paths_one_conn.hex.txt
+c8f684853d180cd1501080b3b0e514e18fd25921c33d49774af818a3f04c730a  ./interop/transcripts/ref__bcurl__three_paths_one_conn.log
+89111e522d443ac5c3e3f7f5681cd7e049b6ca0d86013f66a9df95f8aa3ba8e1  ./interop/transcripts/ref__bcurl__three_paths_one_conn.s2c.bin
+e0cc087d2420d597b0985cd5cea36cd21d0f601d2384ac3b865dd4004ced36e3  ./interop/transcripts/ref__bcurl__truncated_response.c2s.bin
+592962c7dd75971792bb236cfc19e429324c850b4b4e3dcdfb1452cba4790003  ./interop/transcripts/ref__bcurl__truncated_response.hex.txt
+cdf10da581bb24827e1880fa3ff4b11d663510399210ceeb79acf38e16d3ef35  ./interop/transcripts/ref__bcurl__truncated_response.log
+639bed56c5ddb4db021708951859ef3d0f9712f43cebb789c28501d11f2805f8  ./interop/transcripts/ref__bcurl__truncated_response.s2c.bin
+03dc6ec5358ba12af83547dd01a88bc019650412a6f3e3174827b3fa8a5f57ec  ./interop/transcripts/ref__bcurl__unknown_frames_both_ways.c2s.bin
+aa0a3c784785f776459531d48ab0934bc6e792c8caa8c1614ab6c41016ec3101  ./interop/transcripts/ref__bcurl__unknown_frames_both_ways.hex.txt
+06ce1cd616c6493bda77037fd3d3a7b35ba863fa47f1b31c8d44648f672b76ca  ./interop/transcripts/ref__bcurl__unknown_frames_both_ways.log
+3fda8c6c2c10e34a9cafd0c9427928ed30c1d44529b8ff06c3f3461fd3fc5189  ./interop/transcripts/ref__bcurl__unknown_frames_both_ways.s2c.bin
+2210bcc337ccc267348fa4f0ae058702aea0ac948e4823882d4f2bf79ddc6b5d  ./interop/transcripts/ref__cleanroom__corrupt_method_400.c2s.bin
+d5cfc4d2ae33d8cb6505628536c166c87a7231b4382149eba2d4c3ba70143cec  ./interop/transcripts/ref__cleanroom__corrupt_method_400.hex.txt
+043428beb376625030b3c36990c21655f06fab68c91953d8b4ca5455c5a4f984  ./interop/transcripts/ref__cleanroom__corrupt_method_400.log
+e77b0e6845315e027be147cf32d038198dfb39aa542a5c0f25e1ee6305d91c24  ./interop/transcripts/ref__cleanroom__corrupt_method_400.s2c.bin
+c97cfb3b26250a90e457fc6a59ebe14f5324ba94d214fbe171e6c32e8d7914f1  ./interop/transcripts/ref__cleanroom__corrupt_preface.c2s.bin
+f0051bf6b3fa5977e47c5e34bb2ce21ab1f10ed4fda5777b7c9850ba34c6b46f  ./interop/transcripts/ref__cleanroom__corrupt_preface.hex.txt
+dc66045d745a391086b13187bf6ba35ea1317c5c94d6296f319bb4182307b1fa  ./interop/transcripts/ref__cleanroom__corrupt_preface.log
+047a85fc7262a9261d0b7f5c6f3a9592e3559d238c79e6bee4acf2c8643a6584  ./interop/transcripts/ref__cleanroom__corrupt_preface.s2c.bin
+25f186b2584bb9dfd1d826f9095bbb612edb1e7da9692ad0e6d9f19362155e86  ./interop/transcripts/ref__cleanroom__corrupt_response_length.c2s.bin
+7b8ab973af6cb6d977850637658522e74b31c9702e2a0b477b70094e08e272ef  ./interop/transcripts/ref__cleanroom__corrupt_response_length.hex.txt
+4585048f04d58923e1ccc27dadaa8a727ab99d8ea9767e7a0fc66861f2ed308c  ./interop/transcripts/ref__cleanroom__corrupt_response_length.log
+82b5476847d42cd42fdcc67f2d776b4916309dc95fb7429b2556615d0e514815  ./interop/transcripts/ref__cleanroom__corrupt_response_length.s2c.bin
+e5edd9961eb15e790ef89afd06675f64446c93f05c9d0c9df135c50a7dccb06a  ./interop/transcripts/ref__cleanroom__get_blob.c2s.bin
+d85b38ffdc581fcca514e03ccc727e9873697105c1a61f0a9aecde6a930889a0  ./interop/transcripts/ref__cleanroom__get_blob.hex.txt
+b9c4cb2d3a4353b79faedf2fe753e82d2316b1996b83715dc49ee628d6b3ce81  ./interop/transcripts/ref__cleanroom__get_blob.log
+9ddc456076b857740cf36e2a01fd9410ae3ee526e574ea9469f6f2d7ecc1e712  ./interop/transcripts/ref__cleanroom__get_blob.s2c.bin
+9dc4a8f629c39e0592aca677d781e8a760c75157026cbadb1eac8a28d81b77d9  ./interop/transcripts/ref__cleanroom__head.c2s.bin
+181e334532e3e2afbca40cf16da143f17dd7ebb5ab339426b80c7616d489eb96  ./interop/transcripts/ref__cleanroom__head.hex.txt
+7e57cebe54cee6b44275f4f0711fd0119aeb6f2aca2338295e680dfb15be6c4d  ./interop/transcripts/ref__cleanroom__head.log
+cb829dd4bb9e2cb1a74f38f4ecfa7df16e0d996a41a47bc7cf1df1517485d951  ./interop/transcripts/ref__cleanroom__head.s2c.bin
+6bfccb008d80041a422623816e89c4e1ce0f720aca0d9e644f18f15c29e84977  ./interop/transcripts/ref__cleanroom__missing_404.c2s.bin
+87684eed9404bcaa75fefdcc94abc5ade0dd787a6bfe83caa7ced76c0dadd778  ./interop/transcripts/ref__cleanroom__missing_404.hex.txt
+53685e98ef36bad8cc0b89f2bc1818c2268a9d60bd7a27db4cf4b6ce14b4a2ff  ./interop/transcripts/ref__cleanroom__missing_404.log
+6611c71f9b84b4bf30ce1ee05e31f67de3dd76a78afe8ef9975cb78812fa8e65  ./interop/transcripts/ref__cleanroom__missing_404.s2c.bin
+b94e1c5341fb1f06dd2ba9ffb4acc3a1eebc3b8e23dd4b315a8ddfb31bc3e474  ./interop/transcripts/ref__cleanroom__slow_link.c2s.bin
+27b6309faba4b58caee08dd245e334e151d1a611bf090144d5b1f7bdcf369c7e  ./interop/transcripts/ref__cleanroom__slow_link.hex.txt
+3d9da09b2f8b04781143db08d973f8328b2a8ebf749cd23c119dd07fa36a8580  ./interop/transcripts/ref__cleanroom__slow_link.log
+3bb3cf36451481fe23efd04cdf4a630e2521be0c50c17d1375c3ea2bd84adae4  ./interop/transcripts/ref__cleanroom__slow_link.s2c.bin
+930939818becbe724a3085de9f1a47849ac54f4e99ed6eced0709f01958b70d7  ./interop/transcripts/ref__cleanroom__three_paths_one_conn.c2s.bin
+fde10d88e53555efaeac7c50bb413f8f5cfd17a29d05bfd968312ed9b5106c64  ./interop/transcripts/ref__cleanroom__three_paths_one_conn.hex.txt
+05abf22b51f41e040873a94a91c69e45ed82ca8366bcecbe41db3de42b717daa  ./interop/transcripts/ref__cleanroom__three_paths_one_conn.log
+75c91fbb5e76a7152d708a0b938de11da39f5c64e81d7de40c21efffe86dc498  ./interop/transcripts/ref__cleanroom__three_paths_one_conn.s2c.bin
+c3870de1ed6261d8afc2b3b51c7cc2cc6cdf5fc241d0e0e1efbe9ac1f7538181  ./interop/transcripts/ref__cleanroom__truncated_response.c2s.bin
+8d7d0aceb95c8f68e94ea4ce73741cf8e7ae89724c7ca299e6d1ce264f58da29  ./interop/transcripts/ref__cleanroom__truncated_response.hex.txt
+dac41d976f21b619c07239a036a22b7cba75db4d11336992eacf0ba800724976  ./interop/transcripts/ref__cleanroom__truncated_response.log
+0c8de258e6aec33a765a4148694fc286ab61829af1ed78cacc566db48cc4a8ff  ./interop/transcripts/ref__cleanroom__truncated_response.s2c.bin
+d5e803d62045de68cffa315b5c0ec036027477545b52ff8efd422ac62d26dafc  ./interop/transcripts/ref__cleanroom__unknown_frames_both_ways.c2s.bin
+024debef9ca927c5f3bc60bfb54ac4a0dcdeb6dd58c9c3d9d88f15b9e227b5e3  ./interop/transcripts/ref__cleanroom__unknown_frames_both_ways.hex.txt
+a318ac0dd985f2a3d1dbf6ddd0cf0a0fa92622cc58c7f50d1c00e232d886982c  ./interop/transcripts/ref__cleanroom__unknown_frames_both_ways.log
+ab36c763cb6e42967ccfb8b66d8a73c48e01fb24b530868bb9f4f51e9b46bb2e  ./interop/transcripts/ref__cleanroom__unknown_frames_both_ways.s2c.bin
+caf6e2360735142909c05c97b6e3dff9c4e4ddfc9aa17dcadebf16826a6b5b15  ./interop/transcripts/ref__his__corrupt_method_400.c2s.bin
+f2e729f9a8ffcd26f68af537fdd87de73e71ad5fbe0061d3d1ffb62ba0bf36c8  ./interop/transcripts/ref__his__corrupt_method_400.hex.txt
+b06c9807fe5f9dde18dced9886086fd23327111272567793551820450dafc80a  ./interop/transcripts/ref__his__corrupt_method_400.log
+18d09ca18acf0266763792052725e13d1813e5bd17b8bf946a1412ab5cd093ce  ./interop/transcripts/ref__his__corrupt_method_400.s2c.bin
+43508d9eaa2c78bbc07ad61e8b2b0e83ed7a1222e9db7fdf3aa60a9b47c9b454  ./interop/transcripts/ref__his__corrupt_preface.c2s.bin
+2a7300090e38d5fa7f9e1043031abdf73a08ec3e1c62168e8db367c3759f949b  ./interop/transcripts/ref__his__corrupt_preface.hex.txt
+872cdd96e98ff8c7fa185804c84df3293ca066894318cf40db6019b32b17a8f5  ./interop/transcripts/ref__his__corrupt_preface.log
+047a85fc7262a9261d0b7f5c6f3a9592e3559d238c79e6bee4acf2c8643a6584  ./interop/transcripts/ref__his__corrupt_preface.s2c.bin
+0fc21fa36711ae3ce8e5133db2b014db2c50edf75a9cb13c1f3a33c9eb34caf8  ./interop/transcripts/ref__his__corrupt_response_length.c2s.bin
+93aecafc55ce21d2fdd352b76b83cf729c4ade3596d413ce5041c5bef561ad10  ./interop/transcripts/ref__his__corrupt_response_length.hex.txt
+35d6c1c181d533dc32726fe6b2762c177e963adf196fe27d8260c50a2788c02c  ./interop/transcripts/ref__his__corrupt_response_length.log
+b6d0f2c1612ebbf6efd52fb8eaada2993756462e3d837c91638df825c1a12e7a  ./interop/transcripts/ref__his__corrupt_response_length.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/ref__his__get_blob.c2s.bin
+39c74c239af668d238befb02489942c35dcdf6a63ed7f14449efaf1f657a9f53  ./interop/transcripts/ref__his__get_blob.hex.txt
+83ad4c3dcc6d3404a03def3bca7362d47e6fc0e683f4a60a98f75bf4948b59e7  ./interop/transcripts/ref__his__get_blob.log
+3bb3cf36451481fe23efd04cdf4a630e2521be0c50c17d1375c3ea2bd84adae4  ./interop/transcripts/ref__his__get_blob.s2c.bin
+1cdfc1f6b5218ef359811dc6cd53d3b9fe39840083c97afd24642bb97bba3faf  ./interop/transcripts/ref__his__missing_404.c2s.bin
+25ad8106a2f293fb8e082b9977193855044c1da2d63cd418972f8196c4cab146  ./interop/transcripts/ref__his__missing_404.hex.txt
+1ae484d71cd07260c5a0b0d1d1a428cc6a35ce290992de86e89aa006f5de3ef1  ./interop/transcripts/ref__his__missing_404.log
+4ec629d95e7f36d9f87bb66fd94f70eb2e81bfb7b0895f9f2a1052d4a73ec5f5  ./interop/transcripts/ref__his__missing_404.s2c.bin
+94024d4ff06115d6e6f35c2440d1671f6483a1b92bfd4de9d86709b2aaea127d  ./interop/transcripts/ref__his__slow_link.c2s.bin
+f9feced3e86b907d81a673194440e75beb3199216aaab14c32654a5928a0c7c5  ./interop/transcripts/ref__his__slow_link.hex.txt
+3121e8d1df34a84d0e08779dafdb9924e167931f7aac193d2e7ef94b5ca8aa48  ./interop/transcripts/ref__his__slow_link.log
+aa9815ede6658c8829d32088e14508569d2771fba9d0ce1bc6670b2560807e37  ./interop/transcripts/ref__his__slow_link.s2c.bin
+5497ab52ed56b14c2098b1de332e78ac3397fcf686afde9f982ef135748362ee  ./interop/transcripts/ref__his__three_paths_one_conn.c2s.bin
+614decba8f730d8772aaf7f0bc731e0276248c0cfb2762e9e9e417bf104b1bc9  ./interop/transcripts/ref__his__three_paths_one_conn.hex.txt
+9a123c40ac07f86322b5122075c94d8e39be4edd0ed642db85b1f7faeda71534  ./interop/transcripts/ref__his__three_paths_one_conn.log
+d48e4faa08cc1569d97836c018faf16d5a4330bef4bb86506f2dc64c9454d220  ./interop/transcripts/ref__his__three_paths_one_conn.s2c.bin
+b84ad826adc67072f5f3ee738a54ef98d97d03ecab14c271ac023609ad0d6081  ./interop/transcripts/ref__his__truncated_response.c2s.bin
+f87fd4d21f7addf4dbc97289c5af52a3b93b26cd4b81709f261eee82e71858c2  ./interop/transcripts/ref__his__truncated_response.hex.txt
+aca650dee134f77deecb93ec663b175c4ad4f5a2f7f01c8e658d8d568a24332d  ./interop/transcripts/ref__his__truncated_response.log
+6829e68e3a9580148040bd2e0bb68e2ce45ba7cb64679dfa6e05b1f241f3614e  ./interop/transcripts/ref__his__truncated_response.s2c.bin
+076a7556cbf98182b22e39de32f230eb5530e4e8d766bc811392907977db03c0  ./interop/transcripts/ref__his__unknown_frames_both_ways.c2s.bin
+299513adfe9c9a86e772ab9ce0330b78b0bdd62f76771d6ad7749d46fa01cd6f  ./interop/transcripts/ref__his__unknown_frames_both_ways.hex.txt
+9afc600da80621fb2142ee073edd25f728c4b26fb183cf54eaa2c490b55daf21  ./interop/transcripts/ref__his__unknown_frames_both_ways.log
+60b86d404bcbe5f8167ca9f4874ebc0e2af9713bdc8c398ee90a09a6867c1687  ./interop/transcripts/ref__his__unknown_frames_both_ways.s2c.bin
+fc1918089ad79879e5f83a5b497e2883d9bc768f1efd36635f48ec25ddd64d5d  ./interop/transcripts/ref__refcurl__corrupt_method_400.c2s.bin
+170d7d108737409ed6471345557100f09e8ab4d92b056b4c6b5943022c776445  ./interop/transcripts/ref__refcurl__corrupt_method_400.hex.txt
+635bcf406b4632ee4f01422107a325ef71bcc7e4652c712ad61dbbd15cd5665f  ./interop/transcripts/ref__refcurl__corrupt_method_400.log
+e80cbb4333db22acbe0274bd15387c5ddd77ab6977793482c11d288b0a951d18  ./interop/transcripts/ref__refcurl__corrupt_method_400.s2c.bin
+c6f11faef383eb74f427a8e6dbbdafe958f36a0f04551a15c65adf3a405e37a9  ./interop/transcripts/ref__refcurl__corrupt_preface.c2s.bin
+e40c21e18578dfa97f6121d7b80f27aa1fef597f0403c890c99286c8f9f085fd  ./interop/transcripts/ref__refcurl__corrupt_preface.hex.txt
+c91af43085c63d5eb45c57e5655982dc104de5d4b5be0dfa0c42233198884fb3  ./interop/transcripts/ref__refcurl__corrupt_preface.log
+047a85fc7262a9261d0b7f5c6f3a9592e3559d238c79e6bee4acf2c8643a6584  ./interop/transcripts/ref__refcurl__corrupt_preface.s2c.bin
+c9ed9e768280882abd24c1b7b3e46b33125df664751263cb8167aa975349e37c  ./interop/transcripts/ref__refcurl__corrupt_response_length.c2s.bin
+17b1445c690550db496972bab64d2556264168522be4a8bd0404ac17e64056b1  ./interop/transcripts/ref__refcurl__corrupt_response_length.hex.txt
+8e94fc62eeae6e1d5161fb821e8595bd8e39299584804b08297866226535cc08  ./interop/transcripts/ref__refcurl__corrupt_response_length.log
+57accd7cd1f3df5f1bab74db8736790fd8d1b9e1c5966b223cc7d4617d27401d  ./interop/transcripts/ref__refcurl__corrupt_response_length.s2c.bin
+dbbebdc2859627a0c4fcaae96a5e5aaf4bce89b7714b8190489b20aca83561aa  ./interop/transcripts/ref__refcurl__get_blob.c2s.bin
+3e8cc64bd0b4b6da46284cd5a9da35bcd1f6a82b43b4d1b085ee4c11f4333e79  ./interop/transcripts/ref__refcurl__get_blob.hex.txt
+ce9dafe992decfbad80b4476f98e9f4a66d0bfa6879dda1ef4f9e3eb902da1dc  ./interop/transcripts/ref__refcurl__get_blob.log
+cbf022776be46a07c639fdbe7b04d6f658c0cdc9e66c6078e30cd8e179a73c18  ./interop/transcripts/ref__refcurl__get_blob.s2c.bin
+b2a43da7cd9d39dbdbab1e9081a556ee5393ef661dc68d3a43f4f48bec54dd1e  ./interop/transcripts/ref__refcurl__head.c2s.bin
+ad8fb45a63546d975c2aa923f4677c8a5ebde2b55fbc5c78f990dfbd209a2ecc  ./interop/transcripts/ref__refcurl__head.hex.txt
+13af50d4fc69afffbfa7b6168be97b25394389dc39e0883073d522a16c39aba6  ./interop/transcripts/ref__refcurl__head.log
+ef27695474eabcd30b519cac8ad898bf853c7f726e6ce50dc6dc1ee2e13cac10  ./interop/transcripts/ref__refcurl__head.s2c.bin
+8fcdf39309024edf887f7a4c3bedb28a7ee69aac38baf8225c5e9c60ea931cc4  ./interop/transcripts/ref__refcurl__missing_404.c2s.bin
+3fc3d51a5a851289ab5134ce37bcaa08f2d47cd40e04536e6d9de1da059996fa  ./interop/transcripts/ref__refcurl__missing_404.hex.txt
+5e3e4c68d780c8b963b609bfcec08e3dc296c2b851ff03039e8cbad640814e50  ./interop/transcripts/ref__refcurl__missing_404.log
+aadf4ac62547e2c781cfb980a68ee2f354d5151f0003df55d27a67e41bcd6be0  ./interop/transcripts/ref__refcurl__missing_404.s2c.bin
+5bb88d8c4a7c9258dedcf4297adfb004c169e41177e07abb99e3f1ead592adca  ./interop/transcripts/ref__refcurl__slow_link.c2s.bin
+5f693fdddf997fcdcfde271c8fe6fe0ae4508ab5838ece6d67794446b4cf0bff  ./interop/transcripts/ref__refcurl__slow_link.hex.txt
+1d104de9846ecf2ed6ba7b4cc2599ad67e01a4c683320b189de6708aa832dc42  ./interop/transcripts/ref__refcurl__slow_link.log
+50940a9f9808a59ff21e00b5b3c19573542587ea2fd8b48494c6cba7709b1f02  ./interop/transcripts/ref__refcurl__slow_link.s2c.bin
+e3eba0d4ed8978eb93453de5675fe36599e1fa82f85f485081f9f9f594c724da  ./interop/transcripts/ref__refcurl__three_paths_one_conn.c2s.bin
+99dd299472e292f6ae4ce169d07f44a8a00e5a5bb43bf30cf1a8ea09275c35cc  ./interop/transcripts/ref__refcurl__three_paths_one_conn.hex.txt
+f0b7a967aca955562366c3724d3e95a1ce67d09a397404d5e98179018932d9eb  ./interop/transcripts/ref__refcurl__three_paths_one_conn.log
+be70257f23bf0443cf4fccce78e95beca1ac6f52d445e89718c41aad4c6b70f5  ./interop/transcripts/ref__refcurl__three_paths_one_conn.s2c.bin
+f5d2490e338d0f5e089225e87ec5b7327a836f4af3a8610adfb416d365dd4c15  ./interop/transcripts/ref__refcurl__truncated_response.c2s.bin
+088b87e871d16c09ba85faf9e802b9a7e02ecf60b2a6978a6703fc402a9e2b38  ./interop/transcripts/ref__refcurl__truncated_response.hex.txt
+fe8a38cceda9cfe8e4819f1859d5936debc6186602c61865fb29a8a8f82fa349  ./interop/transcripts/ref__refcurl__truncated_response.log
+53182dd5beb064067c530433d97c61eaf8427dd5b44edd30ac68dc3e02d4c1f6  ./interop/transcripts/ref__refcurl__truncated_response.s2c.bin
+27847b447d1a17087ee443731a2a630a32e52e9add68cd9f2e4217bc8eb13e20  ./interop/transcripts/ref__refcurl__unknown_frames_both_ways.c2s.bin
+0b2b6687885bc59de40aa8a7b1bbb0ad1648adb711c408710d53b15dbaf0a2df  ./interop/transcripts/ref__refcurl__unknown_frames_both_ways.hex.txt
+a39ad36253c981a3b14cd02939509820cab51cef69c6a1c7306364f5cdc1637e  ./interop/transcripts/ref__refcurl__unknown_frames_both_ways.log
+4cdebc212aae19ddf223645e08c156a79bb639d101f986af5cbcdc63271b444c  ./interop/transcripts/ref__refcurl__unknown_frames_both_ways.s2c.bin
+03495437e338e2a7ed4509db14a3eca95026a029558936d36d942accbb4b797a  ./make_hexdump.py
+965e45e9a6dd853907e6f54ec7476f7fe41937d7ae935ce6e50654d7754aada2  ./ref/bcurl
+644ec3f823a21baea0b1930853b35f00c69f2581ef653767749ba81ffc809e1f  ./ref/bserve
+b293bb339b82228151bdb9109f437dfd143169faa4118392b40a924600bc2717  ./ref/proto.py
+fffc1f0abba2dd8f1e9c8c585a3648f7ad3fafb6f428c60645ed078e3f2c9c94  ./tests/support.py
+6dbbbb34818bdc30fcc559a85842840f2ff868610f958b5d880bafd4048da30c  ./tests/test_bhttp.py
+e2aa5f1b87c766235b6b86ac3d502ca1b9dabff40e7779bdd5dce2d6666b5670  ./tests/test_golden.py
+804d2ce7410eff97f1e1dee1ba98383c9e56b0768f94001110416567f6b8764d  ./tests/test_interop.py

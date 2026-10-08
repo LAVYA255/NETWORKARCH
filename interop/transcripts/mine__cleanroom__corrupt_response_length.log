@@ -1,0 +1,7 @@
+server=mine client=cleanroom scenario=corrupt_response_length proxy=[--direction s2c --flip-byte 0]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+cleanroom: Length 16711801 over the cap
+--- proxy stderr
+inject: connection 1

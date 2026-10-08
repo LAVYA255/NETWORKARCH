@@ -1,0 +1,6 @@
+server=ref client=bcurl scenario=missing_404 proxy=[]
+exit=4 want=4 connections=1 verdict=XFAIL
+stdout_sha256=709009e02c8e364113b28205aadde30cce270d709073f28153c85fdc5036c96d
+--- stderr
+--- proxy stderr
+inject: connection 1

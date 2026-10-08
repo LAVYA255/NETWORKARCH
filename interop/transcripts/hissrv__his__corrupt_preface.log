@@ -1,0 +1,11 @@
+server=hissrv client=his scenario=corrupt_preface proxy=[--flip-byte 0]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+connecting to 127.0.0.1:45523
+-> preface BHT1
+-> HEADERS stream=1 GET /index.html (END_STREAM)
+  <- frame type=0x2 flags=0x00 stream=0 len=2
+error: server sent GOAWAY(3): bad preface
+--- proxy stderr
+inject: connection 1

@@ -1,0 +1,3 @@
+# Store every file byte for byte: the sha256 manifest in interop/matrix_output.txt
+# and the pinned interop files depend on exact bytes.
+* -text

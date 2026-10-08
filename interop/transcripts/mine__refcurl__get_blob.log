@@ -1,0 +1,6 @@
+server=mine client=refcurl scenario=get_blob proxy=[]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=93355f732da855314573919fb13233b6652e824f360b3f989d816cfd00de73bb
+--- stderr
+--- proxy stderr
+inject: connection 1

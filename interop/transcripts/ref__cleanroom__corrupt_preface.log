@@ -1,0 +1,7 @@
+server=ref client=cleanroom scenario=corrupt_preface proxy=[--flip-byte 0]
+exit=1 want=1 connections=1 verdict=XFAIL
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+cleanroom: server sent GOAWAY(1)
+--- proxy stderr
+inject: connection 1

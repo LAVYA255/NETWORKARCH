@@ -1,0 +1,10 @@
+server=hissrv client=his scenario=truncated_response proxy=[--direction s2c --truncate 140]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+connecting to 127.0.0.1:38809
+-> preface BHT1
+-> HEADERS stream=1 GET /index.html (END_STREAM)
+error: connection failed: server closed the connection mid-frame
+--- proxy stderr
+inject: connection 1

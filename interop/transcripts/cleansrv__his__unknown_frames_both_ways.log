@@ -1,0 +1,42 @@
+server=cleansrv client=his scenario=unknown_frames_both_ways proxy=[--inject-unknown]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=d8fa307f18106c4bc626534cbee07ef3448c68da59c614e85d3f30080cc88837
+--- stderr
+connecting to 127.0.0.1:40233
+-> preface BHT1
+-> HEADERS stream=1 GET /blob.bin (END_STREAM)
+  <- frame type=0x7f flags=0x00 stream=2116341 len=23
+     skipping unknown frame type 0x7f
+  <- frame type=0x0 flags=0x00 stream=1 len=152
+     HEADERS: status 200, {'server': 'cleanroom-server/1', 'date': 'Thu, 08 Oct 2026 22:21:16 GMT', 'content-length': '40000', 'content-type': 'application/octet-stream', 'last-modified': 'Thu, 08 Oct 2026 22:21:04 GMT', 'etag': '"9c40-6ac81750"', 'cache-control': 'no-cache'}
+  <- frame type=0x7f flags=0x00 stream=11587960 len=27
+     skipping unknown frame type 0x7f
+  <- frame type=0x1 flags=0x00 stream=1 len=16384
+     DATA: 16384/40000 bytes
+  <- frame type=0x7f flags=0x00 stream=15768890 len=29
+     skipping unknown frame type 0x7f
+  <- frame type=0x1 flags=0x00 stream=1 len=16384
+     DATA: 32768/40000 bytes
+  <- frame type=0x7f flags=0x00 stream=5161416 len=22
+     skipping unknown frame type 0x7f
+  <- frame type=0x1 flags=0x01 stream=1 len=7232
+     DATA: 40000/40000 bytes
+     END_STREAM on stream 1
+   /blob.bin -> 200, 40000 bytes saved to received/blob.bin
+-> HEADERS stream=2 GET /index.html (END_STREAM)
+  <- frame type=0x7f flags=0x00 stream=15837296 len=18
+     skipping unknown frame type 0x7f
+  <- frame type=0x0 flags=0x00 stream=2 len=131
+     HEADERS: status 200, {'server': 'cleanroom-server/1', 'date': 'Thu, 08 Oct 2026 22:21:16 GMT', 'content-length': '12', 'content-type': 'text/html', 'last-modified': 'Thu, 08 Oct 2026 22:21:04 GMT', 'etag': '"c-6ac81750"', 'cache-control': 'no-cache'}
+  <- frame type=0x7f flags=0x00 stream=9362387 len=12
+     skipping unknown frame type 0x7f
+  <- frame type=0x1 flags=0x01 stream=2 len=12
+     DATA: 12/12 bytes
+     END_STREAM on stream 2
+   /index.html -> 200, 12 bytes saved to received/index.html
+<h1>hi</h1>
+
+-> GOAWAY(0) stream=0
+   connection closed
+--- proxy stderr
+inject: connection 1

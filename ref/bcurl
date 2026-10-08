@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""bcurl [-v] [-I] HOST:PORT/PATH [PATH...] - BHTTP/1 client (Track 2 reference).
+Extra paths are fetched over the SAME connection."""
+import socket, sys
+from proto import *
+
+
+def main():
+    args = sys.argv[1:]
+    verbose = "-v" in args; head = "-I" in args
+    args = [a for a in args if a not in ("-v", "-I")]
+    if not args:
+        sys.exit("usage: bcurl [-v] [-I] host:port/path [/more/paths...]")
+    target = args[0]
+    hostport, _, path = target.partition("/")
+    host, _, port = hostport.partition(":")
+    paths = ["/" + path] + args[1:]
+    sock = socket.create_connection((host, int(port or 9000)))  # the only connection
+
+    def send(data, label):
+        if verbose:
+            print("> %s" % label, file=sys.stderr); print(hexdump(data, "> "), file=sys.stderr)
+        sock.sendall(data)
+
+    send(PREFACE, "preface")
+    worst = 0
+    for n, p in enumerate(paths):
+        stream = 2 * n + 1
+        req = enc_request(M_HEAD if head else M_GET, p,
+                          [("host", hostport), ("user-agent", "bcurl/1"), ("accept", "*/*")])
+        send(pack_frame(T_HEADERS, F_END_STREAM, stream, req), "HEADERS stream=%d" % stream)
+        status = None
+        while True:
+            fr = read_frame(sock)
+            if fr is None:
+                print("bcurl: connection closed", file=sys.stderr); sys.exit(1)
+            ftype, flags, sid, payload, h = fr
+            if verbose:
+                print("< type=%d flags=0x%02x stream=%d len=%d" % (ftype, flags, sid, len(payload)), file=sys.stderr)
+                print(hexdump(h + payload, "< "), file=sys.stderr)
+            if ftype == T_GOAWAY:
+                print("bcurl: server sent GOAWAY", file=sys.stderr); sys.exit(1)
+            if sid not in (stream, 0) or ftype not in (T_HEADERS, T_DATA):
+                continue  # skip unknown frame types cleanly
+            if ftype == T_HEADERS:
+                status, pairs = dec_response(payload)
+                if verbose:
+                    print("< status %d %s" % (status, pairs), file=sys.stderr)
+            elif ftype == T_DATA and not head:
+                sys.stdout.buffer.write(payload); sys.stdout.flush()
+            if flags & F_END_STREAM:
+                break
+        if status is not None and status >= 400:
+            worst = max(worst, status)
+    sock.sendall(pack_frame(T_GOAWAY, 0, 0, b"\x00\x00"))
+    sock.close()
+    sys.exit(4 if 400 <= worst < 500 else 5 if worst >= 500 else 0)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,6 @@
+server=ref client=cleanroom scenario=truncated_response proxy=[--direction s2c --truncate 140]
+exit=0 want=1 connections=1 verdict=XFAIL
+stdout_sha256=737e6daf77521604fc482aa91e8bed8c47f4815c624e61e49c45ecbb5832f708
+--- stderr
+--- proxy stderr
+inject: connection 1

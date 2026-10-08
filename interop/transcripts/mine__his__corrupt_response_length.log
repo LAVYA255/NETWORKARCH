@@ -1,0 +1,12 @@
+server=mine client=his scenario=corrupt_response_length proxy=[--direction s2c --flip-byte 0]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+connecting to 127.0.0.1:33331
+-> preface BHT1
+-> HEADERS stream=1 GET /index.html (END_STREAM)
+protocol error: frame Length 16711801 > 16384
+-> GOAWAY(2) stream=0
+   connection closed
+--- proxy stderr
+inject: connection 1

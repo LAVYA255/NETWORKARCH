@@ -1,0 +1,6 @@
+server=ref client=cleanroom scenario=head proxy=[]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+--- proxy stderr
+inject: connection 1

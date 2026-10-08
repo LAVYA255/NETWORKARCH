@@ -1,0 +1,15 @@
+server=cleansrv client=refcurl scenario=corrupt_response_length proxy=[--direction s2c --flip-byte 0]
+exit=1 want=1 connections=1 verdict=XFAIL
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+Traceback (most recent call last):
+  File "/home/lavya/bh_final/ref/bcurl", line 61, in <module>
+    main()
+    ~~~~^^
+  File "/home/lavya/bh_final/ref/bcurl", line 34, in main
+    fr = read_frame(sock)
+  File "/home/lavya/bh_final/ref/proto.py", line 50, in read_frame
+    raise Malformed("frame too large")
+proto.Malformed: frame too large
+--- proxy stderr
+inject: connection 1

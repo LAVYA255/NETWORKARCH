@@ -1,0 +1,7 @@
+server=mine client=bcurl scenario=corrupt_preface proxy=[--flip-byte 0]
+exit=1 want=1 connections=1 verdict=PASS
+stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+--- stderr
+bcurl: peer sent GOAWAY(3): bad preface
+--- proxy stderr
+inject: connection 1

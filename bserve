@@ -1,0 +1,326 @@
+#!/usr/bin/env python3
+"""bserve ROOT PORT: the BHTTP/1 file server (track 1).
+
+Each client gets one long-lived connection. We read binary requests, find
+the file under ROOT and send back status, headers and the file contents.
+Missing file -> 404, malformed request -> 400, and either way the connection
+stays open. PORT 0 means "pick any free port". At startup we print one line
+to stdout: "bserve: listening on port N".
+"""
+import errno, os, stat, sys, time, socket, threading, mimetypes, email.utils
+try:
+    from bhttp import *
+except ValueError as e:                 # BHTTP_FRAME_TIMEOUT was set to something bad
+    sys.stderr.write("bserve: %s\n" % e)
+    sys.exit(2)
+
+try:
+    IDLE_TIMEOUT = seconds_from_env("BSERVE_IDLE_TIMEOUT", 30)
+    MAX_CONNECTIONS = int_from_env("BSERVE_MAX_CONNECTIONS", 64, 1, 100000)
+except ValueError as e:
+    sys.stderr.write("bserve: %s\n" % e)
+    sys.exit(2)
+SEND_TIMEOUT = 30
+
+mimetypes.init()
+free_slots = threading.BoundedSemaphore(MAX_CONNECTIONS)
+
+DIR_OPEN_FLAGS = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_CLOEXEC", 0)
+STEP_OPEN_FLAGS = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | getattr(os, "O_CLOEXEC", 0)
+
+# Errors during the walk that just mean "this file doesn't exist" (404).
+# ELOOP is what O_NOFOLLOW gives on a symlink; ENAMETOOLONG can't exist anyway.
+NOT_FOUND_ERRNOS = (errno.ELOOP, errno.ENAMETOOLONG)
+
+
+class ClientGone(Exception):
+    """A send failed: the client reset, closed, or stopped reading."""
+
+
+class FileReadFailed(Exception):
+    """Reading the file broke after we had already sent the headers."""
+
+
+def http_date(when=None):
+    return email.utils.formatdate(when, usegmt=True)
+
+
+def send_or_fail(conn, data):
+    try:
+        conn.sendall(data)
+    except OSError as e:                # socket.timeout is an OSError too
+        raise ClientGone(str(e))
+
+
+def is_under(root, path):
+    return os.path.commonpath([root, path]) == root
+
+
+def open_without_symlinks(root, real_path):
+    """Open real_path (already resolved and inside root) one directory at a
+    time, starting from an fd for root and using O_NOFOLLOW at each step.
+
+    realpath() already checked the path, but someone could swap a directory
+    for a symlink after that check. If they do, one of these opens fails with
+    ELOOP or ENOTDIR, so whatever fd we hand back really is inside root.
+
+    Returns an fd, or None if the path doesn't exist as walked (that includes
+    a name too long for the file system). Other OSErrors, like EACCES, are
+    raised and turn into a 500."""
+    rel = os.path.relpath(real_path, root)
+    parts = [] if rel == "." else rel.split(os.sep)
+    fd = os.open(root, DIR_OPEN_FLAGS)
+    try:
+        for i, part in enumerate(parts):
+            if i == len(parts) - 1:
+                info = os.stat(part, dir_fd=fd, follow_symlinks=False)
+                if not (stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)):
+                    os.close(fd)
+                    return None     # fifo, socket, device: don't even open it
+            next_fd = os.open(part, STEP_OPEN_FLAGS, dir_fd=fd)
+            os.close(fd)
+            fd = next_fd
+    except (FileNotFoundError, NotADirectoryError):
+        os.close(fd)
+        return None
+    except OSError as e:
+        os.close(fd)
+        if e.errno in NOT_FOUND_ERRNOS:
+            return None
+        raise
+    return fd
+
+
+def open_in_root(root, path):
+    """Turn a request path into an open regular file under root.
+
+    Same order as SPEC section 5: drop empty and "." segments, map "/" and
+    directories to their index.html, and 404 a path that ends in "/" but
+    names a plain file. Missing files, non-regular files and anything that
+    escapes root (symlinks included) give None, which means 404.
+
+    Returns (file, stat_result, real_path). The stat comes from the open fd,
+    not from the path, so there's no check-then-use race."""
+    segments = [s for s in path.split("/") if s not in ("", ".")]
+    candidate = os.path.join(root, *segments)
+    for is_index_retry in (False, True):
+        real_path = os.path.realpath(candidate)
+        if not is_under(root, real_path):
+            return None
+        fd = open_without_symlinks(root, real_path)
+        if fd is None:
+            return None
+        info = os.fstat(fd)
+        if stat.S_ISDIR(info.st_mode) and not is_index_retry:
+            os.close(fd)
+            candidate = os.path.join(real_path, "index.html")
+            continue
+        if not stat.S_ISREG(info.st_mode) or (not is_index_retry and path.endswith("/")):
+            os.close(fd)
+            return None
+        os.set_blocking(fd, True)
+        return os.fdopen(fd, "rb"), info, real_path
+    return None
+
+
+def make_etag(info):
+    return '"%x-%x"' % (info.st_size, int(info.st_mtime))
+
+
+def respond(conn, stream_id, status, body=b"", extra=(), f=None, length=None):
+    """Send one complete response on stream_id.
+
+    body:    bytes or str to send as DATA (content-length comes from it)
+    f:       an open file to stream instead, `length` bytes of it
+    neither: only `length` is used (HEAD or 304): we advertise the size
+             but send no DATA
+    """
+    if not isinstance(status, int) or not 100 <= status <= 599:
+        raise ValueError("status %r outside 100-599" % (status,))
+    if isinstance(body, str):
+        body = body.encode("utf-8")
+    if f is not None or body:
+        length = length if f is not None else len(body)
+        has_body = length > 0
+    else:
+        length = 0 if length is None else length
+        has_body = False
+    if status == 304 and has_body:
+        raise ValueError("a 304 carries no body")
+    try:
+        headers = [("server", "bserve/1"), ("date", http_date()),
+                   ("content-length", str(length))] + list(extra)
+        conn.settimeout(SEND_TIMEOUT)   # reads set their own timeouts
+        header_block = encode_response(status, headers)
+        if not has_body:
+            send_or_fail(conn, build_frame(HEADERS, FLAG_END_STREAM, stream_id, header_block))
+            return
+        send_or_fail(conn, build_frame(HEADERS, 0, stream_id, header_block))
+        if f is None:
+            for offset in range(0, length, MAX_PAYLOAD):
+                chunk = body[offset:offset + MAX_PAYLOAD]
+                is_last = offset + len(chunk) >= length
+                send_or_fail(conn, build_frame(DATA, FLAG_END_STREAM if is_last else 0,
+                                               stream_id, chunk))
+            return
+        remaining = length
+        while remaining > 0:
+            try:
+                chunk = f.read(min(MAX_PAYLOAD, remaining))
+            except OSError as e:
+                raise FileReadFailed(str(e))
+            if not chunk:
+                raise FileReadFailed("file shrank mid-response")
+            remaining -= len(chunk)
+            send_or_fail(conn, build_frame(DATA, FLAG_END_STREAM if remaining == 0 else 0,
+                                           stream_id, chunk))
+    finally:
+        if f is not None:
+            f.close()
+
+
+def answer_request(conn, stream_id, payload, root):
+    """Handle one request. If something fails before we've sent anything, the
+    client gets a 400, 404 or 500 and the connection carries on."""
+    try:
+        method, path, headers = decode_request(payload)
+    except Malformed:
+        respond(conn, stream_id, 400)
+        return
+    opened = None
+    try:
+        opened = open_in_root(root, path)
+        if opened is None:
+            respond(conn, stream_id, 404)
+            return
+        f, info, real_path = opened
+        mime = mimetypes.guess_type(real_path)[0]
+        etag = make_etag(info)
+        file_headers = [("content-type", mime or "application/octet-stream"),
+                        ("last-modified", http_date(info.st_mtime)),
+                        ("etag", etag), ("cache-control", "no-cache")]
+        if_none_match = dict(headers).get("if-none-match")
+    except ClientGone:
+        raise
+    except Exception:                   # OSError (EACCES, EIO, ...) or a bug of ours
+        if opened is not None:
+            opened[0].close()           # don't leak the fd
+        respond(conn, stream_id, 500)
+        return
+    if if_none_match is not None and if_none_match in (etag, "*"):
+        f.close()
+        respond(conn, stream_id, 304, extra=file_headers, length=info.st_size)
+    elif method == METHOD_HEAD:
+        f.close()
+        respond(conn, stream_id, 200, extra=file_headers, length=info.st_size)
+    else:
+        respond(conn, stream_id, 200, extra=file_headers, f=f, length=info.st_size)
+
+
+def serve_connection(conn, root):
+    """Talk to one client until the connection ends. The socket is always
+    closed on the way out, and any GOAWAY goes through send_goaway_and_close
+    so it ends with FIN rather than RST."""
+    last_stream_id = 0
+    last_activity = time.monotonic()    # "idle" means no new request, not "no frames"
+    try:
+        try:
+            preface = read_exactly(conn, 4, time.monotonic() + FRAME_TIMEOUT)
+        except (EOFError, ProtocolError, OSError):
+            return                      # preface too slow or cut off: just close
+        if preface != PREFACE:
+            send_goaway_and_close(conn, ERR_PREFACE)
+            return
+        while True:
+            idle_left = IDLE_TIMEOUT - (time.monotonic() - last_activity)
+            try:
+                ftype, flags, stream_id, payload = recv_frame(conn, idle=max(0.01, idle_left))
+            except socket.timeout:
+                send_goaway_and_close(conn, ERR_NONE)   # idle too long
+                return
+            except EOFError:
+                return
+            except ProtocolError as e:
+                send_goaway_and_close(conn, e.code)
+                return
+            if ftype == GOAWAY:
+                try:
+                    parse_goaway(stream_id, payload)
+                except ProtocolError:
+                    send_goaway_and_close(conn, ERR_PROTOCOL)
+                    return
+                drain_and_close(conn)           # client said goodbye; we send nothing
+                return
+            if ftype != HEADERS:
+                continue                        # DATA from a client or unknown type: ignore
+            if stream_id == 0:
+                send_goaway_and_close(conn, ERR_PROTOCOL)   # requests never use stream 0
+                return
+            if stream_id <= last_stream_id:
+                respond(conn, stream_id, 400)   # reused or going-backwards stream ID
+                last_activity = time.monotonic()
+                continue
+            last_stream_id = stream_id
+            try:
+                answer_request(conn, stream_id, payload, root)
+            except FileReadFailed:
+                send_goaway_and_close(conn, ERR_INTERNAL)   # too late for a 500
+                return
+            last_activity = time.monotonic()
+    except (ClientGone, OSError):
+        return                                  # client reset or stopped reading
+    finally:
+        conn.close()
+
+
+def connection_thread(conn, root):
+    try:
+        serve_connection(conn, root)
+    finally:
+        free_slots.release()
+
+
+def open_listener(port):
+    """IPv6 + IPv4 on one socket if the host can do it, plain IPv4 if not."""
+    if socket.has_dualstack_ipv6():
+        return socket.create_server(("", port), family=socket.AF_INET6,
+                                    dualstack_ipv6=True, backlog=16)
+    return socket.create_server(("0.0.0.0", port), backlog=16)
+
+
+def main(argv):
+    if len(argv) != 3:
+        sys.stderr.write("usage: bserve ROOT PORT\n")
+        return 2
+    root = os.path.realpath(argv[1])
+    if not os.path.isdir(root):
+        sys.stderr.write("bserve: %s is not a directory\n" % argv[1])
+        return 2
+    port = argv[2]
+    if not (port.isascii() and port.isdigit()) or int(port) > 65535:
+        sys.stderr.write("bserve: bad port %r\n" % port)
+        return 2
+    listener = open_listener(int(port))
+    sys.stdout.write("bserve: listening on port %d\n" % listener.getsockname()[1])
+    sys.stdout.flush()
+    while True:
+        try:
+            conn, _ = listener.accept()
+        except OSError:                 # out of fds or similar: wait a bit, keep going
+            time.sleep(0.1)
+            continue
+        if not free_slots.acquire(blocking=False):
+            conn.close()                # full: refuse without a GOAWAY
+            continue
+        try:
+            threading.Thread(target=connection_thread, args=(conn, root), daemon=True).start()
+        except RuntimeError:            # couldn't start a thread: give the slot back
+            free_slots.release()
+            conn.close()
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main(sys.argv))
+    except KeyboardInterrupt:
+        sys.exit(0)

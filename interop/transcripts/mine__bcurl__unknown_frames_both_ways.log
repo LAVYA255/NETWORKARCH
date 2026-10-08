@@ -1,0 +1,6 @@
+server=mine client=bcurl scenario=unknown_frames_both_ways proxy=[--inject-unknown]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=d8fa307f18106c4bc626534cbee07ef3448c68da59c614e85d3f30080cc88837
+--- stderr
+--- proxy stderr
+inject: connection 1

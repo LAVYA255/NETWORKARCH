@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""bserve ROOT PORT - BHTTP/1 file server (Track 1 reference)."""
+import os, socket, sys, threading, email.utils, mimetypes
+from proto import *
+
+TYPES = {".html": "text/html", ".txt": "text/plain", ".css": "text/css", ".js": "application/javascript"}
+
+
+def respond(conn, stream, status, body=b"", ctype="text/plain", send_body=True):
+    pairs = [("server", "bserve/1"), ("date", email.utils.formatdate(usegmt=True)),
+             ("content-type", ctype), ("content-length", str(len(body)))]
+    hdr = enc_response(status, pairs)
+    if not send_body or not body:
+        conn.sendall(pack_frame(T_HEADERS, F_END_STREAM, stream, hdr))
+        return
+    conn.sendall(pack_frame(T_HEADERS, 0, stream, hdr))
+    for i in range(0, len(body), MAX_PAYLOAD):
+        part = body[i:i + MAX_PAYLOAD]
+        last = i + MAX_PAYLOAD >= len(body)
+        conn.sendall(pack_frame(T_DATA, F_END_STREAM if last else 0, stream, part))
+
+
+def resolve(root, path):
+    if not path.startswith("/") or "\x00" in path:
+        return None
+    parts = [p for p in path.split("?")[0].split("/") if p]
+    if any(p == ".." for p in parts):
+        return None
+    full = os.path.join(root, *parts) if parts else root
+    if os.path.isdir(full):
+        full = os.path.join(full, "index.html")
+    return full
+
+
+def handle(conn, root):
+    try:
+        if read_exact(conn, 4) != PREFACE:
+            conn.sendall(pack_frame(T_GOAWAY, 0, 0, b"\x00\x01"))
+            return
+        while True:
+            try:
+                fr = read_frame(conn)
+            except Malformed:
+                respond(conn, 0, 400, b"bad frame\n")
+                conn.sendall(pack_frame(T_GOAWAY, 0, 0, b"\x00\x01"))
+                return
+            if fr is None:
+                return
+            ftype, flags, stream, payload, _ = fr
+            if ftype == T_GOAWAY:
+                return
+            if ftype != T_HEADERS:
+                continue  # unknown types (and stray DATA on a GET) are skipped
+            try:
+                method, path, pairs = dec_request(payload)
+            except Malformed as e:
+                respond(conn, stream, 400, ("malformed request: %s\n" % e).encode())
+                continue
+            full = resolve(root, path)
+            if full is None:
+                respond(conn, stream, 400, b"bad path\n")
+                continue
+            if not os.path.isfile(full):
+                respond(conn, stream, 404, b"not found\n")
+                continue
+            with open(full, "rb") as f:
+                body = f.read()
+            ctype = TYPES.get(os.path.splitext(full)[1], "application/octet-stream")
+            respond(conn, stream, 200, body, ctype, send_body=(method == M_GET))
+    finally:
+        conn.close()
+
+
+def main():
+    if len(sys.argv) != 3:
+        sys.exit("usage: bserve ROOT PORT")
+    root, port = os.path.abspath(sys.argv[1]), int(sys.argv[2])
+    s = socket.socket(); s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind(("0.0.0.0", port)); s.listen(16)
+    while True:
+        c, _ = s.accept()
+        threading.Thread(target=handle, args=(c, root), daemon=True).start()
+
+
+if __name__ == "__main__":
+    main()

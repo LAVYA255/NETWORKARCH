@@ -1,0 +1,21 @@
+server=mine client=his scenario=slow_link proxy=[--delay 50]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=93355f732da855314573919fb13233b6652e824f360b3f989d816cfd00de73bb
+--- stderr
+connecting to 127.0.0.1:45011
+-> preface BHT1
+-> HEADERS stream=1 GET /blob.bin (END_STREAM)
+  <- frame type=0x0 flags=0x00 stream=1 len=142
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:21:57 GMT', 'content-length': '40000', 'content-type': 'application/octet-stream', 'last-modified': 'Thu, 08 Oct 2026 22:21:04 GMT', 'etag': '"9c40-6ac81750"', 'cache-control': 'no-cache'}
+  <- frame type=0x1 flags=0x00 stream=1 len=16384
+     DATA: 16384/40000 bytes
+  <- frame type=0x1 flags=0x00 stream=1 len=16384
+     DATA: 32768/40000 bytes
+  <- frame type=0x1 flags=0x01 stream=1 len=7232
+     DATA: 40000/40000 bytes
+     END_STREAM on stream 1
+   /blob.bin -> 200, 40000 bytes saved to received/blob.bin
+-> GOAWAY(0) stream=0
+   connection closed
+--- proxy stderr
+inject: connection 1

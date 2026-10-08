@@ -1,0 +1,6 @@
+server=ref client=bcurl scenario=three_paths_one_conn proxy=[]
+exit=0 want=0 connections=1 verdict=PASS
+stdout_sha256=797249121f7479577e1ab58c072c6ae10f872742367e0bcf14bdc76a10addb53
+--- stderr
+--- proxy stderr
+inject: connection 1
