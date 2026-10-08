@@ -2,11 +2,11 @@ server=hissrv client=his scenario=missing_404 proxy=[]
 exit=1 want=4 connections=1 verdict=PASS
 stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 --- stderr
-connecting to 127.0.0.1:34733
+connecting to 127.0.0.1:42061
 -> preface BHT1
 -> HEADERS stream=1 GET /nope.txt (END_STREAM)
   <- frame type=0x0 flags=0x01 stream=1 len=55
-     HEADERS: status 404, {'content-length': '0', 'server': 'bht1-mini/0.1', 'date': 'Thu, 08 Oct 2026 22:21:34 GMT'}
+     HEADERS: status 404, {'content-length': '0', 'server': 'bht1-mini/0.1', 'date': 'Thu, 08 Oct 2026 22:39:00 GMT'}
      END_STREAM on stream 1
 error: 404 Not Found: /nope.txt
 -> GOAWAY(0) stream=0

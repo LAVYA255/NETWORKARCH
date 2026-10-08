@@ -2,11 +2,11 @@ server=cleansrv client=his scenario=missing_404 proxy=[]
 exit=1 want=4 connections=1 verdict=PASS
 stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 --- stderr
-connecting to 127.0.0.1:37313
+connecting to 127.0.0.1:35853
 -> preface BHT1
 -> HEADERS stream=1 GET /nope.txt (END_STREAM)
   <- frame type=0x0 flags=0x01 stream=1 len=60
-     HEADERS: status 404, {'server': 'cleanroom-server/1', 'date': 'Thu, 08 Oct 2026 22:21:15 GMT', 'content-length': '0'}
+     HEADERS: status 404, {'server': 'cleanroom-server/1', 'date': 'Thu, 08 Oct 2026 22:38:41 GMT', 'content-length': '0'}
      END_STREAM on stream 1
 error: 404 Not Found: /nope.txt
 -> GOAWAY(0) stream=0

@@ -2,11 +2,11 @@ server=ref client=his scenario=missing_404 proxy=[]
 exit=1 want=4 connections=1 verdict=PASS
 stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 --- stderr
-connecting to 127.0.0.1:43085
+connecting to 127.0.0.1:41401
 -> preface BHT1
 -> HEADERS stream=1 GET /nope.txt (END_STREAM)
   <- frame type=0x0 flags=0x00 stream=1 len=64
-     HEADERS: status 404, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:13 GMT', 'content-type': 'text/plain', 'content-length': '10'}
+     HEADERS: status 404, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:39 GMT', 'content-type': 'text/plain', 'content-length': '10'}
   <- frame type=0x1 flags=0x01 stream=1 len=10
      DATA: 10/10 bytes
      END_STREAM on stream 1

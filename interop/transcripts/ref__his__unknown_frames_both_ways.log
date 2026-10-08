@@ -2,13 +2,13 @@ server=ref client=his scenario=unknown_frames_both_ways proxy=[--inject-unknown]
 exit=0 want=0 connections=1 verdict=PASS
 stdout_sha256=d8fa307f18106c4bc626534cbee07ef3448c68da59c614e85d3f30080cc88837
 --- stderr
-connecting to 127.0.0.1:38271
+connecting to 127.0.0.1:39833
 -> preface BHT1
 -> HEADERS stream=1 GET /blob.bin (END_STREAM)
   <- frame type=0x7f flags=0x00 stream=2116341 len=23
      skipping unknown frame type 0x7f
   <- frame type=0x0 flags=0x00 stream=1 len=81
-     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:14 GMT', 'content-type': 'application/octet-stream', 'content-length': '40000'}
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:40 GMT', 'content-type': 'application/octet-stream', 'content-length': '40000'}
   <- frame type=0x7f flags=0x00 stream=11587960 len=27
      skipping unknown frame type 0x7f
   <- frame type=0x1 flags=0x00 stream=1 len=16384
@@ -27,7 +27,7 @@ connecting to 127.0.0.1:38271
   <- frame type=0x7f flags=0x00 stream=15837296 len=18
      skipping unknown frame type 0x7f
   <- frame type=0x0 flags=0x00 stream=2 len=63
-     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:14 GMT', 'content-type': 'text/html', 'content-length': '12'}
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:40 GMT', 'content-type': 'text/html', 'content-length': '12'}
   <- frame type=0x7f flags=0x00 stream=9362387 len=12
      skipping unknown frame type 0x7f
   <- frame type=0x1 flags=0x01 stream=2 len=12

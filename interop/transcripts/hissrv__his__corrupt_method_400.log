@@ -2,11 +2,11 @@ server=hissrv client=his scenario=corrupt_method_400 proxy=[--flip-byte 12]
 exit=1 want=4 connections=1 verdict=PASS
 stdout_sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 --- stderr
-connecting to 127.0.0.1:33351
+connecting to 127.0.0.1:44575
 -> preface BHT1
 -> HEADERS stream=1 GET /index.html (END_STREAM)
   <- frame type=0x0 flags=0x01 stream=1 len=55
-     HEADERS: status 400, {'content-length': '0', 'server': 'bht1-mini/0.1', 'date': 'Thu, 08 Oct 2026 22:21:36 GMT'}
+     HEADERS: status 400, {'content-length': '0', 'server': 'bht1-mini/0.1', 'date': 'Thu, 08 Oct 2026 22:39:02 GMT'}
      END_STREAM on stream 1
    /index.html -> 400, 0 bytes saved to received/index.html
 -> GOAWAY(0) stream=0

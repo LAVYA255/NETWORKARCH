@@ -2,11 +2,11 @@ server=ref client=his scenario=three_paths_one_conn proxy=[]
 exit=0 want=0 connections=1 verdict=PASS
 stdout_sha256=797249121f7479577e1ab58c072c6ae10f872742367e0bcf14bdc76a10addb53
 --- stderr
-connecting to 127.0.0.1:34627
+connecting to 127.0.0.1:42109
 -> preface BHT1
 -> HEADERS stream=1 GET /index.html (END_STREAM)
   <- frame type=0x0 flags=0x00 stream=1 len=63
-     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:13 GMT', 'content-type': 'text/html', 'content-length': '12'}
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:40 GMT', 'content-type': 'text/html', 'content-length': '12'}
   <- frame type=0x1 flags=0x01 stream=1 len=12
      DATA: 12/12 bytes
      END_STREAM on stream 1
@@ -15,7 +15,7 @@ connecting to 127.0.0.1:34627
 
 -> HEADERS stream=2 GET /sub/ (END_STREAM)
   <- frame type=0x0 flags=0x00 stream=2 len=63
-     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:13 GMT', 'content-type': 'text/html', 'content-length': '10'}
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:40 GMT', 'content-type': 'text/html', 'content-length': '10'}
   <- frame type=0x1 flags=0x01 stream=2 len=10
      DATA: 10/10 bytes
      END_STREAM on stream 2
@@ -24,7 +24,7 @@ sub index
 
 -> HEADERS stream=3 GET /blob.bin (END_STREAM)
   <- frame type=0x0 flags=0x00 stream=3 len=81
-     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:22:13 GMT', 'content-type': 'application/octet-stream', 'content-length': '40000'}
+     HEADERS: status 200, {'server': 'bserve/1', 'date': 'Thu, 08 Oct 2026 22:39:40 GMT', 'content-type': 'application/octet-stream', 'content-length': '40000'}
   <- frame type=0x1 flags=0x00 stream=3 len=16384
      DATA: 16384/40000 bytes
   <- frame type=0x1 flags=0x00 stream=3 len=16384
