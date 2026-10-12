@@ -34,7 +34,7 @@ Requests are strictly one at a time: the client MUST NOT send a request before t
 
 ## 5. Request (HEADERS payload, client to server)
 
-`Method (1) | Path length (2) | Path | Header count (1) | Header entries`
+`Method (1) | Path length (2) | Path | Header count (1) | Header entries `
 
 Method: 0x01 GET, 0x02 HEAD; any other value is malformed. The client MUST set END_STREAM. Since a request is always exactly one frame, the server ignores the flag. Requests never have a body. Every request header is optional, and a server MUST NOT reject a request because one is missing.
 
